@@ -1,483 +1,922 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arnell Company — Web Design & IT Consulting</title>
-  <meta name="description" content="Arnell Company offers website design and IT consulting. Clean solutions, clear results." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --white: #ffffff;
-      --off-white: #f7f7f8;
-      --light: #ededef;
-      --mid: #9898a6;
-      --text: #1a1a24;
-      --accent-start: #6B6EF5;
-      --accent-end: #EC4899;
-      --radius: 10px;
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arnell Company – Business Automation, AI &amp; Local AI</title>
+<meta name="description" content="Business automation, AI agents and local AI for companies. We also build websites and system integrations. Book a free consultation.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://arnellcompany.se/en/">
+<link rel="alternate" hreflang="sv" href="https://arnellcompany.se/">
+<link rel="alternate" hreflang="en" href="https://arnellcompany.se/en/">
+<link rel="alternate" hreflang="x-default" href="https://arnellcompany.se/">
+<meta name="theme-color" content="#F6F4EE">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Arnell Company">
+<meta property="og:title" content="Arnell Company – Business Automation, AI &amp; Local AI">
+<meta property="og:description" content="Business automation, AI agents and local AI for companies. We also build websites and system integrations. Book a free consultation.">
+<meta property="og:url" content="https://arnellcompany.se/en/">
+<meta property="og:locale" content="en_GB">
+<meta property="og:locale:alternate" content="sv_SE">
+<meta property="og:image" content="https://arnellcompany.se/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Arnell Company – Business Automation, AI &amp; Local AI">
+<meta name="twitter:description" content="Business automation, AI agents and local AI for companies. We also build websites and system integrations. Book a free consultation.">
+<meta name="twitter:image" content="https://arnellcompany.se/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "Organization",
+        "ProfessionalService"
+      ],
+      "@id": "https://arnellcompany.se/#org",
+      "name": "Arnell Company",
+      "url": "https://arnellcompany.se/",
+      "logo": "https://arnellcompany.se/logo.png",
+      "image": "https://arnellcompany.se/og-image.png",
+      "email": "contact@arnellcompany.se",
+      "description": "Arnell Company helps small and medium-sized businesses with business automation, AI agents, local and private AI, web development and system integrations.",
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "Sweden"
+        }
+      ],
+      "knowsLanguage": [
+        "sv",
+        "en"
+      ],
+      "availableLanguage": [
+        "Swedish",
+        "English"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://arnellcompany.se/#website",
+      "url": "https://arnellcompany.se/",
+      "name": "Arnell Company",
+      "inLanguage": [
+        "sv",
+        "en"
+      ],
+      "publisher": {
+        "@id": "https://arnellcompany.se/#org"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://arnellcompany.se/en/#webpage",
+      "url": "https://arnellcompany.se/en/",
+      "name": "Arnell Company – Business Automation, AI & Local AI",
+      "description": "Business automation, AI agents and local AI for companies. We also build websites and system integrations. Book a free consultation.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://arnellcompany.se/#website"
+      },
+      "about": {
+        "@id": "https://arnellcompany.se/#org"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://arnellcompany.se/en/#service-1",
+      "name": "Business automation",
+      "description": "Cut manual administration. We automate email, leads, bookings, reports and data flows between your systems, using tools such as n8n.",
+      "url": "https://arnellcompany.se/en/#automation",
+      "provider": {
+        "@id": "https://arnellcompany.se/#org"
+      },
+      "areaServed": "SE",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://arnellcompany.se/en/#service-2",
+      "name": "AI automation & AI agents",
+      "description": "Practical AI assistants that handle email, documents and customer questions, with a person reviewing where it matters.",
+      "url": "https://arnellcompany.se/en/#ai",
+      "provider": {
+        "@id": "https://arnellcompany.se/#org"
+      },
+      "areaServed": "SE",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://arnellcompany.se/en/#service-3",
+      "name": "Local & private AI",
+      "description": "Run AI models in your own environment for greater control over your data and infrastructure.",
+      "url": "https://arnellcompany.se/en/#local-ai",
+      "provider": {
+        "@id": "https://arnellcompany.se/#org"
+      },
+      "areaServed": "SE",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://arnellcompany.se/en/#service-4",
+      "name": "Web & custom software",
+      "description": "Websites, web applications, internal portals and APIs built from scratch around your goals.",
+      "url": "https://arnellcompany.se/en/#web",
+      "provider": {
+        "@id": "https://arnellcompany.se/#org"
+      },
+      "areaServed": "SE",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://arnellcompany.se/en/#service-5",
+      "name": "IT consulting & integrations",
+      "description": "We analyse your processes and connect your systems so information flows without manual work.",
+      "url": "https://arnellcompany.se/en/#web",
+      "provider": {
+        "@id": "https://arnellcompany.se/#org"
+      },
+      "areaServed": "SE",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://arnellcompany.se/en/#faq-schema",
+      "inLanguage": "en",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is business automation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Business automation means recurring tasks are carried out by systems instead of by hand, for example moving data between programs, sending confirmations, producing reports or sorting incoming email. The aim is to save time, reduce errors and let staff focus on work that needs people."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should a company automate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When the same task is done often, follows the same rules and takes noticeable time, or when information has to be entered in several places. Tasks that are rare or need a lot of judgement are usually not worth automating first."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is an AI agent and what can it do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An AI agent is software that can read information, make simple decisions and carry out steps in your systems to reach a goal, for example sorting incoming email, summarising documents or answering common customer questions. We build in review and limits so a person has the final say where it matters."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is local AI and how does it differ from cloud AI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Local AI means the AI model runs on a server you control instead of with an external provider. That gives you more control over where data is processed. The trade-off is that local models can be less capable than the largest cloud models, and hardware and operations need to be factored in."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is local AI secure and GDPR-compliant?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Local AI can give you better control over data, but it is not automatically secure or GDPR-compliant. That depends on how the solution is set up, what data is handled and how it is operated. We therefore make no absolute guarantees. It needs a technical and legal assessment for your situation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does n8n work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "n8n is a workflow tool. An event, such as a new email or booking, starts a chain of steps that connect your systems. n8n has many ready-made integrations and can also connect to custom APIs. It can run in your own environment or as a cloud service."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do we need to replace our systems to automate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually not. We connect the tools you already use through their integrations or APIs. If a system cannot be connected, we will tell you and suggest alternatives."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does it cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on the scope. We work with a fixed scope and give you a clear proposal with a price after a first conversation, so you know what is included before we start. The first conversation is free."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does a project take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on how many systems and steps are involved. A well-defined workflow is quicker than a larger integration or a custom application. We provide a timeline after the initial analysis."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you build and maintain our website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We design and develop websites from scratch and offer ongoing support and maintenance so the site stays working, secure and up to date."
+          }
+        }
+      ]
     }
+  ]
+}
+</script>
+<!-- Analytics: add your Plausible / GA4 / Search Console snippet here. Events (cta_click, generate_lead, language_switch,
+     calculator_use, email_click) are already pushed to window.dataLayer and forwarded to gtag()/plausible() if present. -->
+<style>
+:root{
+  --paper:#F6F4EE;
+  --paper-2:#ECE8DD;
+  --ink:#0D1117;
+  --ink-2:#151B24;
+  --ink-3:#1E2632;
+  --muted:#4A5160;
+  --line:rgba(13,17,23,.14);
+  --line-d:rgba(246,244,238,.16);
+  --blue:#1F4BD8;
+  --blue-d:#173AA8;
+  --signal:#C8F25B;
+  --radius:12px;
+  --f-display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+  --f-body:'Hanken Grotesk','Segoe UI',system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --pad:clamp(1.25rem,5vw,3.5rem);
+  --max:1180px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px;-webkit-text-size-adjust:100%}
+body{font-family:var(--f-body);background:var(--paper);color:var(--ink);font-size:1.0625rem;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
+.dark :focus-visible{outline-color:var(--signal)}
+.skip{position:absolute;left:-999px;top:0;background:var(--ink);color:var(--paper);padding:.75rem 1rem;z-index:200}
+.skip:focus{left:0}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+section{position:relative}
+.sec{padding:clamp(4.5rem,9vw,7.5rem) 0}
 
-    html { scroll-behavior: smooth; }
+/* type */
+h1,h2,h3{font-family:var(--f-display);font-weight:700;letter-spacing:-.03em;line-height:1.05}
+h1{font-size:clamp(2.6rem,6.4vw,5rem);font-weight:800}
+h2{font-size:clamp(2rem,4.2vw,3.2rem);margin-bottom:1.25rem;max-width:20ch}
+h3{font-size:1.25rem;letter-spacing:-.02em;line-height:1.2}
+.eyebrow{font-family:var(--f-mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--blue);margin-bottom:1.25rem;display:flex;gap:.6rem;align-items:center}
+.eyebrow::before{content:"";width:1.6rem;height:2px;background:currentColor}
+.dark .eyebrow{color:var(--signal)}
+.lead{font-size:clamp(1.1rem,1.6vw,1.3rem);color:var(--muted);max-width:60ch}
+.dark .lead{color:#B6BDC9}
+.muted{color:var(--muted)}
 
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      color: var(--text);
-      background: var(--white);
-      font-size: 16px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
+/* nav */
+.nav{position:sticky;top:0;z-index:100;background:rgba(246,244,238,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:68px;gap:1rem}
+.logo img{height:30px;width:auto}
+.nav-links{display:flex;align-items:center;gap:1.75rem;list-style:none}
+.nav-links a{text-decoration:none;font-size:.95rem;font-weight:500;color:var(--muted);transition:color .15s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a.btn{color:#fff}.nav-links a.btn:hover{color:#fff}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:2px;font-family:var(--f-mono);font-size:.75rem}
+.lang a{padding:.25rem .6rem;border-radius:999px;color:var(--muted);text-decoration:none}
+.lang a[aria-current="true"]{background:var(--ink);color:var(--paper)}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 1.5rem;border-radius:999px;font-weight:600;font-size:1rem;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .15s,background .15s,color .15s,border-color .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-primary:hover{background:var(--blue-d)}
+.btn-ghost{border-color:var(--ink);color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+.btn-signal{background:var(--signal);color:var(--ink)}
+.btn-sm{padding:.55rem 1.1rem;font-size:.9rem}
+.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:8px;padding:.5rem .65rem;cursor:pointer}
+.menu-btn span{display:block;width:18px;height:2px;background:var(--ink);margin:4px 0;transition:transform .2s,opacity .2s}
+.menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu-btn[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 
-    /* ── NAV ── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(255,255,255,0.88);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--light);
-      padding: 0 5vw;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+/* hero */
+.hero{padding:clamp(3.5rem,8vw,6.5rem) 0 clamp(3.5rem,7vw,5.5rem);background:
+  linear-gradient(var(--line) 1px,transparent 1px) 0 0/72px 72px,
+  linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/72px 72px;
+  background-color:var(--paper);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 20% 40%,var(--paper) 0%,rgba(246,244,238,.88) 45%,rgba(246,244,238,.4) 100%);pointer-events:none}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.hero h1 em{font-style:normal;color:var(--blue);position:relative;white-space:nowrap}
+.hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.12em;background:var(--signal);z-index:-1}
+.hero .lead{margin:1.5rem 0 2.25rem}
+.hero-actions{display:flex;gap:.9rem;flex-wrap:wrap}
+.hero-note{margin-top:1.5rem;font-size:.9rem;color:var(--muted);display:flex;gap:1.25rem;flex-wrap:wrap}
+.hero-note span::before{content:"✓ ";color:var(--blue);font-weight:700}
 
-    nav .logo img {
-      height: 32px;
-      display: block;
-    }
+.term{background:var(--ink);color:#D7DCE4;border-radius:14px;box-shadow:12px 12px 0 var(--blue);overflow:hidden;font-family:var(--f-mono);font-size:.82rem}
+.term-bar{display:flex;align-items:center;gap:.5rem;padding:.75rem 1rem;border-bottom:1px solid var(--line-d);color:#8B93A1;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em}
+.term-bar i{width:9px;height:9px;border-radius:50%;background:#2B3442;display:block}
+.term-bar b{margin-left:auto;font-weight:500;color:var(--signal)}
+.term ol{list-style:none;padding:1.1rem 1rem 1.25rem}
+.term li{display:grid;grid-template-columns:3.2rem 1fr;gap:.5rem;padding:.4rem 0;line-height:1.45;opacity:1}
+.term li time{color:#6D7787}
+.term li::after{content:none}
+.term li.ok span::before{content:"→ ";color:var(--signal)}
+.term-foot{padding:.8rem 1rem;border-top:1px solid var(--line-d);font-size:.72rem;color:#8B93A1;font-family:var(--f-body)}
+.js .term li{opacity:0;transform:translateY(6px);animation:line .45s forwards}
+.js .term li:nth-child(1){animation-delay:.3s}.js .term li:nth-child(2){animation-delay:1.1s}.js .term li:nth-child(3){animation-delay:1.9s}.js .term li:nth-child(4){animation-delay:2.7s}.js .term li:nth-child(5){animation-delay:3.5s}
+@keyframes line{to{opacity:1;transform:none}}
+.cursor{display:inline-block;width:.5em;height:1em;background:var(--signal);vertical-align:-.15em;margin-left:.2rem;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
 
-    nav a {
-      text-decoration: none;
-      color: var(--mid);
-      font-size: 0.875rem;
-      font-weight: 500;
-      transition: color 0.15s;
-    }
-    nav a:hover { color: var(--text); }
+/* value */
+.value{background:var(--ink);color:var(--paper)}
+.value h2{max-width:18ch}
+.value-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(2rem,6vw,5rem);align-items:start}
+.value .lead{color:#B6BDC9}
+.value ol{list-style:none;counter-reset:v}
+.value li{counter-increment:v;display:grid;grid-template-columns:3rem 1fr;gap:1rem;padding:1.4rem 0;border-top:1px solid var(--line-d)}
+.value li:last-child{border-bottom:1px solid var(--line-d)}
+.value li::before{content:"0" counter(v);font-family:var(--f-mono);color:var(--signal);font-size:.9rem;padding-top:.2rem}
+.value li h3{margin-bottom:.3rem;color:#fff}
+.value li p{color:#B6BDC9;font-size:1rem}
 
-    nav .nav-links {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
+/* services overview */
+.svc-list{list-style:none;margin-top:3rem;border-top:2px solid var(--ink)}
+.svc-list a{display:grid;grid-template-columns:4.5rem 1fr 1.4fr auto;gap:1.5rem;align-items:center;padding:1.6rem .25rem;border-bottom:1px solid var(--line);text-decoration:none;transition:background .2s,padding .2s}
+.svc-list a:hover{background:var(--paper-2);padding-left:1rem;padding-right:1rem}
+.svc-list .n{font-family:var(--f-mono);color:var(--blue);font-size:.9rem}
+.svc-list h3{font-size:clamp(1.25rem,2.2vw,1.7rem)}
+.svc-list p{color:var(--muted);font-size:1rem}
+.svc-list .arr{font-size:1.4rem;transition:transform .2s}
+.svc-list a:hover .arr{transform:translateX(6px)}
 
-    nav .nav-cta {
-      color: var(--text);
-      border: 1px solid var(--light);
-      padding: 0.4rem 1rem;
-      border-radius: var(--radius);
-      font-weight: 600;
-      font-size: 0.875rem;
-    }
-    nav .nav-cta:hover {
-      background: var(--off-white);
-      color: var(--text);
-    }
+/* split sections */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,5rem);align-items:start}
+.tag{display:inline-block;font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;padding:.25rem .6rem;border:1px solid var(--line);border-radius:999px;margin-bottom:1.25rem;color:var(--muted)}
+.dark .tag{border-color:var(--line-d);color:#B6BDC9}
+.checks{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:.55rem 1.5rem;margin-top:1.5rem}
+.checks.one{grid-template-columns:1fr}
+.checks li{display:flex;gap:.6rem;font-size:.98rem;line-height:1.45}
+.checks li::before{content:"";flex:none;width:.55rem;height:.55rem;margin-top:.5rem;background:var(--blue);transform:rotate(45deg)}
+.dark .checks li::before{background:var(--signal)}
+.sub-h{font-family:var(--f-mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:2.25rem 0 .25rem}
+.dark .sub-h{color:#8B93A1}
+.prose p+p{margin-top:1rem}
+.prose{max-width:62ch}
+.box{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem}
+.alt{background:var(--paper-2)}
 
-    /* ── HERO ── */
-    .hero {
-      padding: 100px 5vw 80px;
-      max-width: 820px;
-      margin: 0 auto;
-    }
+/* flow diagram */
+.flow{background:var(--ink);color:#D7DCE4;border-radius:14px;padding:1.5rem;box-shadow:10px 10px 0 var(--signal)}
+.flow-t{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:#8B93A1;margin-bottom:1.25rem}
+.flow ol{list-style:none;position:relative}
+.flow li{position:relative;display:grid;grid-template-columns:2.4rem 1fr;gap:1rem;padding-bottom:1.4rem}
+.flow li:last-child{padding-bottom:0}
+.flow li::before{content:"";position:absolute;left:1.2rem;top:2.4rem;bottom:0;width:2px;background:repeating-linear-gradient(var(--signal) 0 6px,transparent 6px 12px);background-size:2px 12px;animation:dash 1s linear infinite}
+.flow li:last-child::before{display:none}
+@keyframes dash{to{background-position:0 12px}}
+.flow .dot{width:2.4rem;height:2.4rem;border-radius:10px;background:var(--ink-3);border:1px solid var(--line-d);display:grid;place-items:center;font-family:var(--f-mono);font-size:.8rem;color:var(--signal)}
+.flow strong{display:block;color:#fff;font-weight:600;line-height:1.3}
+.flow span{font-size:.9rem;color:#9AA3B2;line-height:1.4;display:block}
 
-    .hero h1 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: clamp(2.4rem, 5.5vw, 3.8rem);
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      color: var(--text);
-      margin-bottom: 1.25rem;
-    }
+/* ai list */
+.ai-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 3rem;margin-top:2.5rem;border-top:2px solid var(--ink)}
+.ai-list li{padding:1.3rem 0;border-bottom:1px solid var(--line)}
+.ai-list h3{font-size:1.15rem;margin-bottom:.25rem}
+.ai-list p{color:var(--muted);font-size:.98rem}
+.note{margin-top:2rem;padding:1.1rem 1.25rem;border-left:4px solid var(--blue);background:#fff;max-width:70ch;font-size:.98rem}
+.dark .note{background:var(--ink-2);border-color:var(--signal);color:#C7CED9}
 
-    .hero h1 .gradient {
-      background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+/* local ai */
+.dark{background:var(--ink);color:var(--paper)}
+.dark h2,.dark h3{color:#fff}
+.infra{margin:3rem 0 2.5rem;display:grid;grid-template-columns:minmax(0,2.4fr) minmax(0,1fr);gap:1.5rem;align-items:stretch}
+.infra .env{border:2px solid var(--signal);border-radius:16px;padding:1.25rem 1.25rem 1.5rem;position:relative;background:rgba(200,242,91,.04)}
+.infra .env-l{position:absolute;top:-.8rem;left:1.25rem;background:var(--ink);padding:0 .6rem;font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--signal)}
+.infra .row{display:grid;grid-template-columns:1fr auto 1.15fr auto 1fr;gap:.75rem;align-items:center;margin-top:.75rem}
+.infra .n{background:var(--ink-3);border:1px solid var(--line-d);border-radius:10px;padding:.9rem 1rem;font-size:.92rem;line-height:1.35;text-align:center}
+.infra .n small{display:block;color:#8B93A1;font-family:var(--f-mono);font-size:.68rem;margin-top:.25rem}
+.infra .n.core{border-color:var(--signal);color:#fff;font-weight:600}
+.infra .ar{color:var(--signal);font-size:1.3rem;font-family:var(--f-mono)}
+.infra .out{border:2px dashed #3A4556;border-radius:16px;padding:1.25rem;display:flex;flex-direction:column;justify-content:center;text-align:center;color:#9AA3B2;font-size:.92rem;gap:.6rem}
+.infra .out b{color:#D7DCE4;font-weight:600}
+.infra .out small{font-family:var(--f-mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.08em}
+.cmp{width:100%;border-collapse:collapse;font-size:.97rem;margin-top:1rem}
+.cmp caption{text-align:left;font-family:var(--f-mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:#8B93A1;margin-bottom:.75rem}
+.cmp th,.cmp td{text-align:left;padding:.85rem 1rem .85rem 0;border-bottom:1px solid var(--line-d);vertical-align:top}
+.cmp thead th{color:var(--signal);font-family:var(--f-mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;font-weight:500}
+.cmp tbody th{color:#fff;font-weight:600;width:22%}
+.cmp td{color:#B6BDC9}
 
-    .hero p {
-      font-size: 1.125rem;
-      color: var(--mid);
-      max-width: 520px;
-      margin-bottom: 2.25rem;
-      line-height: 1.7;
-    }
+/* web */
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,5vw,4rem);margin-top:2.5rem}
+.cols2 h3{padding-bottom:.9rem;border-bottom:2px solid var(--ink);margin-bottom:.4rem}
+.cols2 .checks{margin-top:1rem;grid-template-columns:1fr}
 
-    .hero-actions {
-      display: flex;
-      gap: 0.875rem;
-      flex-wrap: wrap;
-    }
+/* process */
+.steps{list-style:none;counter-reset:s;display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:3rem;border-top:2px solid var(--ink)}
+.steps li{counter-increment:s;padding:1.75rem 1.75rem 2rem 0;border-bottom:1px solid var(--line);position:relative}
+.steps li::before{content:counter(s,decimal-leading-zero);display:block;font-family:var(--f-display);font-weight:800;font-size:2.8rem;color:transparent;-webkit-text-stroke:1.5px var(--blue);line-height:1;margin-bottom:.9rem}
+.steps h3{margin-bottom:.35rem}
+.steps p{color:var(--muted);font-size:.98rem}
 
-    .btn {
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      border-radius: var(--radius);
-      font-size: 0.9375rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: opacity 0.15s, transform 0.15s;
-      cursor: pointer;
-    }
-    .btn:hover { opacity: 0.85; transform: translateY(-1px); }
+/* use cases */
+.uc{list-style:none;margin-top:2.5rem;border-top:2px solid var(--ink)}
+.uc li{display:grid;grid-template-columns:.8fr 1.2fr;gap:2rem;padding:1.5rem 0;border-bottom:1px solid var(--line)}
+.uc h3{font-size:1.35rem}
+.uc p{color:var(--muted)}
 
-    .btn-primary {
-      background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
-      color: #fff;
-      border: none;
-    }
+/* calculator */
+.calc{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(1.5rem,5vw,4rem);margin-top:2.5rem;align-items:stretch}
+.calc form{display:grid;gap:1.4rem}
+.field label,.field .lab{display:flex;justify-content:space-between;font-weight:600;font-size:.97rem;margin-bottom:.45rem}
+.field output{font-family:var(--f-mono);color:var(--blue);font-weight:500}
+input[type=number],input[type=text],input[type=email],select,textarea{width:100%;padding:.8rem 1rem;border:1.5px solid rgba(13,17,23,.3);border-radius:10px;background:#fff;font-size:1rem}
+input[type=range]{width:100%;accent-color:var(--blue);height:2rem}
+textarea{min-height:140px;resize:vertical}
+.result{background:var(--ink);color:#fff;border-radius:14px;padding:2rem;display:flex;flex-direction:column;justify-content:space-between;gap:1.5rem}
+.result .big{font-family:var(--f-display);font-weight:800;font-size:clamp(2.4rem,5vw,3.6rem);line-height:1;letter-spacing:-.03em;color:var(--signal)}
+.result .big small{font-size:1rem;font-weight:500;color:#B6BDC9;letter-spacing:0;margin-left:.3rem;font-family:var(--f-body)}
+.result .rl{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:#8B93A1;margin-bottom:.35rem}
+.result .fine{font-size:.85rem;color:#9AA3B2;line-height:1.5}
 
-    .btn-secondary {
-      background: var(--off-white);
-      color: var(--text);
-      border: 1px solid var(--light);
-    }
+/* faq */
+.faq{margin-top:2.5rem;max-width:860px;border-top:2px solid var(--ink)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:1.3rem 3rem 1.3rem 0;font-family:var(--f-display);font-weight:600;font-size:1.2rem;letter-spacing:-.02em;position:relative;line-height:1.3}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:.25rem;top:1rem;font-size:1.8rem;font-weight:400;color:var(--blue);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 3rem 1.5rem 0;color:var(--muted);max-width:68ch}
 
-    /* ── DIVIDER ── */
-    .divider {
-      border: none;
-      border-top: 1px solid var(--light);
-      margin: 0 5vw;
-    }
+/* contact */
+.contact{background:var(--paper-2)}
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,6vw,5rem);align-items:start}
+.mail{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--f-mono);font-size:1rem;margin-top:1.5rem;text-decoration:none;border-bottom:2px solid var(--blue);padding-bottom:.2rem}
+.cform{background:#fff;border:1px solid var(--line);border-radius:16px;padding:clamp(1.25rem,3vw,2rem);display:grid;gap:1.1rem;box-shadow:8px 8px 0 var(--ink)}
+.cform .two{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+.cform label{display:block;font-weight:600;font-size:.92rem;margin-bottom:.35rem}
+.cform .opt{font-weight:400;color:var(--muted)}
+.consent{display:flex;gap:.7rem;align-items:flex-start;font-size:.88rem;color:var(--muted);line-height:1.45}
+.consent input{margin-top:.2rem;width:1.1rem;height:1.1rem;accent-color:var(--blue);flex:none}
+.hp{position:absolute;left:-9999px;height:0;overflow:hidden}
+.status{font-size:.95rem;min-height:1.4rem}
+.status.ok{color:#14702E;font-weight:600}
+.status.err{color:#B3261E;font-weight:600}
 
-    /* ── SERVICES ── */
-    .services {
-      padding: 80px 5vw;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+/* footer */
+footer{background:var(--paper);border-top:1px solid var(--line);padding:3.5rem 0 2rem}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem}
+.foot img{height:30px;width:auto;margin-bottom:1rem}
+.fh{font-family:var(--f-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.9rem;font-weight:500}
+.foot ul{list-style:none;display:grid;gap:.4rem}
+.foot a{text-decoration:none;font-size:.95rem}
+.foot a:hover{color:var(--blue);text-decoration:underline}
+.legal{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+#privacy{margin-top:2rem;font-size:.9rem;color:var(--muted);max-width:75ch;scroll-margin-top:80px}
+#privacy .fh{margin-bottom:.4rem;color:var(--ink)}
 
-    .section-label {
-      font-size: 0.8125rem;
-      font-weight: 600;
-      color: var(--mid);
-      letter-spacing: 0.06em;
-      margin-bottom: 2rem;
-      text-transform: uppercase;
-    }
+/* reveal */
+.js .rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.js .rv.in{opacity:1;transform:none}
 
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-    }
+/* responsive */
+@media (max-width:960px){
+  .hero .wrap,.value-grid,.split,.contact-grid,.calc{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .infra{grid-template-columns:1fr}
+  .svc-list a{grid-template-columns:3rem 1fr auto}
+  .svc-list p{grid-column:2/3;grid-row:2}
+  .svc-list .arr{grid-row:1/3;grid-column:3}
+  .term{box-shadow:8px 8px 0 var(--blue)}
+}
+@media (max-width:820px){
+  .menu-btn{display:block}
+  .nav-links{position:absolute;top:68px;left:0;right:0;background:var(--paper);flex-direction:column;align-items:stretch;gap:0;padding:.5rem var(--pad) 1.25rem;border-bottom:1px solid var(--line);display:none}
+  .nav-links.open{display:flex}
+  .nav-links li{border-bottom:1px solid var(--line)}
+  .nav-links a{display:block;padding:.95rem 0;font-size:1.05rem}
+  .nav-links li:last-child,.nav-links li.lang-li{border:0;padding-top:1rem}
+}
+@media (max-width:640px){
+  .checks,.ai-list,.cols2,.steps,.cform .two,.foot{grid-template-columns:1fr}
+  .uc li{grid-template-columns:1fr;gap:.4rem}
+  .infra .row{grid-template-columns:1fr;}
+  .infra .ar{transform:rotate(90deg);justify-self:center}
+  .hero h1 em{white-space:normal}
+  .cmp{font-size:.88rem}
+  .cmp tbody th{width:auto}
+  .cmp th,.cmp td{padding-right:.6rem}
+  .faq details p{padding-right:0}
+  .btn{width:100%;justify-content:center}
+  .nav .btn{width:auto}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .js .rv,.js .term li{opacity:1;transform:none}
+}
 
-    .service-card {
-      background: var(--off-white);
-      border: 1px solid var(--light);
-      border-radius: 14px;
-      padding: 2rem;
-    }
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-    .service-card .icon {
-      width: 40px;
-      height: 40px;
-      margin-bottom: 1rem;
-      background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .service-card .icon svg {
-      width: 20px;
-      height: 20px;
-      stroke: #fff;
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .service-card h3 {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.0625rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: var(--text);
-    }
-
-    .service-card p {
-      font-size: 0.9rem;
-      color: var(--mid);
-      line-height: 1.65;
-    }
-
-    /* ── WHY ── */
-    .why {
-      padding: 80px 5vw;
-      background: var(--off-white);
-      border-top: 1px solid var(--light);
-      border-bottom: 1px solid var(--light);
-    }
-
-    .why-inner {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: start;
-    }
-
-    .why h2 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      letter-spacing: -0.025em;
-      line-height: 1.2;
-      margin-bottom: 1rem;
-    }
-
-    .why .sub {
-      color: var(--mid);
-      font-size: 0.9375rem;
-      line-height: 1.7;
-    }
-
-    .why-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-
-    .why-list li {
-      display: flex;
-      gap: 0.875rem;
-      align-items: flex-start;
-    }
-
-    .why-list .check {
-      flex-shrink: 0;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 2px;
-    }
-
-    .why-list .check svg {
-      width: 12px;
-      height: 12px;
-      stroke: white;
-      fill: none;
-      stroke-width: 2.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .why-list span {
-      font-size: 0.9375rem;
-      color: var(--text);
-      line-height: 1.5;
-    }
-
-    /* ── CONTACT ── */
-    .contact {
-      padding: 80px 5vw;
-      max-width: 600px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .contact h2 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      letter-spacing: -0.025em;
-      margin-bottom: 0.875rem;
-    }
-
-    .contact p {
-      color: var(--mid);
-      font-size: 0.9375rem;
-      margin-bottom: 2rem;
-      line-height: 1.7;
-    }
-
-    .contact-email {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text);
-      text-decoration: none;
-      border: 1px solid var(--light);
-      border-radius: var(--radius);
-      padding: 0.8rem 1.5rem;
-      background: var(--off-white);
-      transition: background 0.15s, border-color 0.15s;
-    }
-    .contact-email:hover {
-      background: var(--light);
-      border-color: #d0d0d8;
-    }
-
-    .contact-email svg {
-      width: 16px;
-      height: 16px;
-      stroke: var(--mid);
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--light);
-      padding: 1.5rem 5vw;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-
-    footer img { height: 28px; }
-
-    footer p {
-      font-size: 0.8125rem;
-      color: var(--mid);
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 640px) {
-      .why-inner { grid-template-columns: 1fr; gap: 2rem; }
-      nav .nav-links { gap: 1rem; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .btn { transition: none; }
-    }
-  </style>
+</style>
 </head>
-<body>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
 
-  <!-- NAV -->
-  <nav>
-    <a class="logo" href="#top">
-      <img src="logo.png" alt="Arnell Company" />
-    </a>
-    <div class="nav-links">
-      <a href="#services">Services</a>
-      <a href="#why">About</a>
-      <a href="#contact" class="nav-cta">Get in touch</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="/en/#top" aria-label="Arnell Company"><img src="/logo.png" width="160" height="30" alt="Arnell Company"></a>
+    <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav aria-label="Menu" style="display:contents">
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#services">Services</a></li><li><a href="#local-ai">Local AI</a></li><li><a href="#process">Process</a></li><li><a href="#faq">FAQ</a></li>
+      <li><a class="btn btn-primary btn-sm" href="#contact">Get in touch</a></li>
+      <li class="lang-li"><span class="lang" role="group" aria-label="Language"><a href="/" hreflang="sv" lang="sv" data-lang-link>SV</a><a href="/en/" hreflang="en" lang="en" aria-current="true">EN</a></span></li>
+    </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero" id="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Automation · AI · Local AI · Web</p>
+      <h1>Automation and AI that removes the <em>repetitive work.</em></h1>
+      <p class="lead">We help small and medium-sized businesses automate administration, connect their systems and put AI to work in everyday operations, including locally and privately. We also build websites and custom software.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">Book a free consultation</a>
+        <a class="btn btn-ghost" href="#services">Explore our services</a>
+      </div>
+      <p class="hero-note"><span>Reply within one business day</span><span>Fixed scope – no surprise invoices</span></p>
     </div>
-  </nav>
+    <figure class="term" aria-label="Example workflow">
+      <div class="term-bar"><i></i><i></i><i></i><span>Example workflow</span><b>● running</b></div>
+      <ol><li class="ok"><time>09:02</time><span>New enquiry arrives by email</span></li><li class="ok"><time>09:02</time><span>AI reads and summarises the message</span></li><li class="ok"><time>09:02</time><span>Contact is created in the CRM</span></li><li class="ok"><time>09:03</time><span>Draft reply waits for review</span></li><li class="ok"><time>09:03</time><span>Meeting is booked in the calendar</span></li></ol>
+      <figcaption class="term-foot">Illustration. Every workflow is designed around your business.</figcaption>
+    </figure>
+  </div>
+</section>
 
-  <!-- HERO -->
-  <section class="hero" id="top">
-    <h1>Website design &amp; IT consulting<br><span class="gradient">done simply.</span></h1>
-    <p>We help businesses build a clear digital presence — from websites that work to IT infrastructure you can rely on. No fluff, just results.</p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn btn-primary">Get in touch</a>
-      <a href="#services" class="btn btn-secondary">What we do</a>
+<section class="sec value dark" id="why">
+  <div class="wrap value-grid">
+    <div class="rv">
+      <p class="eyebrow">Why Arnell Company</p>
+      <h2>A small team that builds what you actually need.</h2>
+      <p class="lead">You work directly with the people doing the work – no account managers, no outsourcing. We start from your problem, not from the technology, and propose the simplest solution that will do the job.</p>
     </div>
-  </section>
+    <ol class="rv"><li><div><h3>Clear communication</h3><p>You know what is happening, and why, from the first call to delivery.</p></div></li><li><div><h3>Fixed scope</h3><p>Projects with a clear scope and price up front – no surprise invoices.</p></div></li><li><div><h3>Based in Sweden</h3><p>We work in your time zone and speak both Swedish and English.</p></div></li><li><div><h3>Fast delivery, solid quality</h3><p>We work efficiently without cutting corners, and build things that can be maintained and extended.</p></div></li></ol>
+  </div>
+</section>
 
-  <hr class="divider" />
-
-  <!-- SERVICES -->
-  <section class="services" id="services">
-    <p class="section-label">What we do</p>
-    <div class="services-grid">
-
-      <div class="service-card">
-        <div class="icon">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-        </div>
-        <h3>Website Design</h3>
-        <p>Clean, responsive websites built around your goals — not templates. We design and develop from scratch.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
-        </div>
-        <h3>IT Consulting</h3>
-        <p>Technical guidance on infrastructure, tooling, and systems — tailored to your size and budget.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="icon">
-          <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-        </div>
-        <h3>Web Development</h3>
-        <p>From landing pages to full web applications, we write code that is maintainable and performant.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="icon">
-          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h3>Support &amp; Maintenance</h3>
-        <p>Ongoing technical support so your website and systems stay up, secure, and up to date.</p>
-      </div>
-
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="rv">
+      <p class="eyebrow">What we do</p>
+      <h2>Five ways to help your business work smarter.</h2>
     </div>
-  </section>
+    <ul class="svc-list rv"><li><a href="#automation"><span class="n">01</span><h3>Business automation</h3><p>Cut manual administration. We automate email, leads, bookings, reports and data flows between your systems, using tools such as n8n.</p><span class="arr" aria-hidden="true">→</span></a></li><li><a href="#ai"><span class="n">02</span><h3>AI automation &amp; AI agents</h3><p>Practical AI assistants that handle email, documents and customer questions, with a person reviewing where it matters.</p><span class="arr" aria-hidden="true">→</span></a></li><li><a href="#local-ai"><span class="n">03</span><h3>Local &amp; private AI</h3><p>Run AI models in your own environment for greater control over your data and infrastructure.</p><span class="arr" aria-hidden="true">→</span></a></li><li><a href="#web"><span class="n">04</span><h3>Web &amp; custom software</h3><p>Websites, web applications, internal portals and APIs built from scratch around your goals.</p><span class="arr" aria-hidden="true">→</span></a></li><li><a href="#web"><span class="n">05</span><h3>IT consulting &amp; integrations</h3><p>We analyse your processes and connect your systems so information flows without manual work.</p><span class="arr" aria-hidden="true">→</span></a></li></ul>
+  </div>
+</section>
 
-  <!-- WHY -->
-  <section class="why" id="why">
-    <div class="why-inner">
+<section class="sec alt" id="automation">
+  <div class="wrap split">
+    <div class="rv">
+      <span class="tag">01 · Business automation</span>
+      <h2>Automation is about giving time back.</h2>
+      <div class="prose"><p>Business automation means systems carry out recurring tasks for you: moving data between programs, sending confirmations, preparing documents and sending reminders. It frees up time, reduces manual errors and stops things falling through the cracks.</p><p>n8n is a workflow tool where an event – a new email, a booking, a payment – triggers a chain of steps across your systems. It can be self-hosted in your own environment or used as a cloud service, and works well when ready-made integrations are not enough.</p></div>
+      <p class="sub-h">Signs it is time to automate</p>
+      <ul class="checks one"><li>You copy the same information between systems by hand.</li><li>Enquiries and emails sit unanswered because nobody has time.</li><li>Reports and invoice data take hours to compile each month.</li><li>Customer data lives in several places and does not match.</li></ul>
+      <p class="sub-h">What we can automate</p>
+      <ul class="checks "><li>n8n workflows</li><li>Incoming email handling</li><li>Lead capture and qualification</li><li>CRM automation</li><li>Customer onboarding</li><li>Bookings and reminders</li><li>Data synchronisation between platforms</li><li>Automated reporting</li><li>Invoice and document processing</li><li>API integrations</li><li>Internal business workflows</li></ul>
+    </div>
+    <div class="rv">
+      <div class="flow">
+        <p class="flow-t">Example: from enquiry to booked meeting</p>
+        <ol><li><span class="dot">IN</span><div><strong>Enquiry arrives</strong><span>Via form, email or booking system</span></div></li><li><span class="dot">n8n</span><div><strong>Workflow starts</strong><span>Details are checked and structured</span></div></li><li><span class="dot">CRM</span><div><strong>Customer is registered</strong><span>No manual data entry</span></div></li><li><span class="dot">CAL</span><div><strong>Meeting is booked</strong><span>The calendar updates automatically</span></div></li><li><span class="dot">OUT</span><div><strong>Confirmation is sent</strong><span>The customer gets a reply, you get a notification</span></div></li></ol>
+      </div>
+      <p class="note">The result: less manual work, fewer mistakes and faster replies to your customers.</p>
+      <p style="margin-top:1.5rem"><a class="btn btn-primary" href="#contact">Discuss an automation project</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="ai">
+  <div class="wrap">
+    <div class="rv">
+      <span class="tag">02 · AI automation &amp; AI agents</span>
+      <h2>AI that is useful day to day, not just in demos.</h2>
+      <p class="lead">An AI agent is software that can read information, make simple decisions and carry out steps in your systems to reach a goal. We build agents for well-defined tasks where the benefit is clear and a person still has the final say.</p>
+    </div>
+    <ul class="ai-list rv"><li><h3>AI customer support assistant</h3><p>Answers common questions from your own information and hands over to a person when needed.</p></li><li><h3>Email and message handling</h3><p>Sorts, summarises and prepares draft replies that you review before they are sent.</p></li><li><h3>Document processing</h3><p>Reads invoices, contracts and forms and passes the data to the right system.</p></li><li><h3>Knowledge assistant</h3><p>Makes your manuals, procedures and policies searchable through plain questions and answers.</p></li><li><h3>Lead qualification</h3><p>Assesses incoming enquiries so you contact the right people first.</p></li><li><h3>Administrative support</h3><p>Compiles documents, meeting notes and reports.</p></li><li><h3>Custom AI agents</h3><p>Tailored to one specific task in your business.</p></li><li><h3>Connected to existing systems</h3><p>AI that works inside the tools you already use, without switching.</p></li></ul>
+    <p class="note rv">AI sometimes gets things wrong. That is why we build in review, logging and clear limits on what an agent may do, and we start small where the risk is low.</p>
+  </div>
+</section>
+
+<section class="sec dark" id="local-ai">
+  <div class="wrap">
+    <div class="rv">
+      <span class="tag">03 · Local &amp; private AI</span>
+      <h2>AI that runs in your own environment.</h2>
+      <p class="lead">Many AI services send your data to an external provider. With local or private AI, the model runs on your own server, in a controlled environment or on hardware you own, so you decide where the information goes.</p>
+    </div>
+    <div class="infra rv" role="img" aria-label="Your environment: Documents &amp; data → Local AI model → Your tools. External cloud AI: Only used if you choose to.">
+      <div class="env" aria-hidden="true">
+        <span class="env-l">Your environment</span>
+        <div class="row">
+          <div class="n">Documents &amp; data<small>your files, email, cases</small></div><span class="ar">→</span>
+          <div class="n core">Local AI model<small>e.g. via Ollama</small></div><span class="ar">→</span>
+          <div class="n">Your tools<small>CRM, email, systems</small></div>
+        </div>
+      </div>
+      <div class="out" aria-hidden="true"><small>Optional</small><b>External cloud AI</b><span>Only used if you choose to</span></div>
+    </div>
+    <div class="split rv">
       <div>
-        <h2>A small team with a focused approach.</h2>
-        <p class="sub">We work closely with each client — no account managers, no outsourcing. You work directly with the people doing the work.</p>
+        <p class="sub-h" style="margin-top:0">Advantages of local AI</p>
+        <ul class="checks one"><li>Greater control over your data</li><li>More privacy-conscious ways of working</li><li>Less dependence on external providers</li><li>Control over the infrastructure</li><li>Can run inside your existing IT environment</li></ul>
+        <p class="sub-h">How we can help</p>
+        <ul class="checks one"><li>Local large language model (LLM) deployment</li><li>Private AI environments</li><li>Self-hosted AI solutions</li><li>Local AI assistants</li><li>Private document analysis</li><li>Internal knowledge assistants</li><li>AI infrastructure setup</li><li>Connecting models to business tools</li><li>Ollama and other local AI technologies</li></ul>
       </div>
-      <ul class="why-list">
-        <li>
-          <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
-          <span>Clear communication from start to delivery</span>
-        </li>
-        <li>
-          <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
-          <span>Fixed-scope projects — no surprise invoices</span>
-        </li>
-        <li>
-          <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
-          <span>Swedish-based, available in your timezone</span>
-        </li>
-        <li>
-          <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
-          <span>Fast turnaround without cutting corners</span>
-        </li>
-      </ul>
+      <div>
+        <table class="cmp">
+          <caption>Cloud AI compared with local AI</caption>
+          <thead><tr><th scope="col"><span class="vh">Cloud AI compared with local AI</span></th><th scope="col">Cloud AI</th><th scope="col">Local AI</th></tr></thead>
+          <tbody><tr><th scope="row">Where does the model run?</th><td>With the provider</td><td>On your server or in your environment</td></tr><tr><th scope="row">Data control</th><td>Governed by the provider&#x27;s terms</td><td>You decide</td></tr><tr><th scope="row">Capability</th><td>Often the most advanced models</td><td>Open models, which can be less capable depending on hardware</td></tr><tr><th scope="row">Cost</th><td>Ongoing usage fees</td><td>Investment in hardware and operations</td></tr><tr><th scope="row">Maintenance</th><td>Handled by the provider</td><td>Handled by you or by us</td></tr></tbody>
+        </table>
+        <p class="note">Local AI is not automatically secure or GDPR-compliant. What applies to you needs a technical and legal assessment of your specific situation.</p>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <h2>Let's talk about your project.</h2>
-    <p>Tell us what you're working on. We'll get back to you within one business day.</p>
-    <a href="mailto:hello@arnellcompany.se" class="contact-email">
-      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      hello@arnellcompany.se
-    </a>
-  </section>
+<section class="sec" id="web">
+  <div class="wrap">
+    <div class="rv">
+      <span class="tag">04 · Web, integrations &amp; IT consulting</span>
+      <h2>Websites and systems that work together.</h2>
+      <p class="lead">We build websites and custom software, and we connect the systems you already have. When bookings, customer records, invoicing and email talk to each other, double entry disappears because information only has to be registered once.</p>
+    </div>
+    <div class="cols2 rv">
+      <div><h3>Web &amp; development</h3><ul class="checks "><li>Modern business websites</li><li>Custom web applications</li><li>Internal portals</li><li>API development and integrations</li><li>Optimisation and performance</li><li>Responsive UI/UX development</li><li>Custom business tools</li><li>Support and maintenance</li></ul></div>
+      <div><h3>IT consulting</h3><ul class="checks "><li>Technical consulting</li><li>Business process analysis</li><li>Software integration</li><li>System architecture</li><li>Digital transformation</li><li>Workflow optimisation</li><li>Technical problem-solving</li></ul></div>
+    </div>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <img src="logo.png" alt="Arnell Company" />
-    <p>© 2024 Arnell Company. All rights reserved.</p>
-  </footer>
+<section class="sec alt" id="process">
+  <div class="wrap">
+    <div class="rv">
+      <p class="eyebrow">How we work</p>
+      <h2>From first conversation to working solution.</h2>
+    </div>
+    <ol class="steps rv"><li><h3>Discovery</h3><p>We listen and learn about your business, your goals and what takes time today.</p></li><li><h3>Analysis</h3><p>We review your processes and assess what is actually worth automating.</p></li><li><h3>Solution design</h3><p>We propose a clear solution with scope, timeline and price.</p></li><li><h3>Implementation</h3><p>We build the solution and connect your systems.</p></li><li><h3>Testing</h3><p>We test with real scenarios before anything goes live.</p></li><li><h3>Ongoing improvement</h3><p>We follow up, adjust and develop further as your needs change.</p></li></ol>
+  </div>
+</section>
 
+<section class="sec" id="use-cases">
+  <div class="wrap">
+    <div class="rv">
+      <p class="eyebrow">Industries &amp; use cases</p>
+      <h2>Which businesses do we help?</h2>
+      <p class="lead">We are not limited to one industry. Here are a few examples of how different businesses can use automation and AI.</p>
+    </div>
+    <ul class="uc rv"><li><h3>Beauty &amp; wellness</h3><p>Booking confirmations, reminders, follow-ups and enquiries handled without manual work.</p></li><li><h3>Retail &amp; e-commerce</h3><p>Orders, customer emails and invoice data moved between systems automatically.</p></li><li><h3>Professional services</h3><p>Quotes, document handling, time reporting and client follow-up.</p></li><li><h3>Local businesses</h3><p>A website that captures enquiries, and routines that answer common questions.</p></li><li><h3>Other small and medium-sized businesses</h3><p>Reports, data flows and internal workflows tailored to your operations.</p></li></ul>
+  </div>
+</section>
+
+<section class="sec alt" id="calculator">
+  <div class="wrap">
+    <div class="rv">
+      <p class="eyebrow">Do the maths</p>
+      <h2>How much time goes into recurring tasks?</h2>
+      <p class="lead">Enter one task you do over and over. The result is a simple estimate based on your own numbers.</p>
+    </div>
+    <div class="calc rv" id="calc">
+      <form onsubmit="return false" aria-label="How much time goes into recurring tasks?">
+        <div class="field"><label for="c-n">Times per week</label><input id="c-n" type="number" inputmode="numeric" min="0" max="10000" value="20"></div>
+        <div class="field"><label for="c-m">Minutes each time</label><input id="c-m" type="number" inputmode="numeric" min="0" max="1440" value="10"></div>
+        <div class="field"><label for="c-r">Hourly cost (SEK)</label><input id="c-r" type="number" inputmode="numeric" min="0" max="10000" value="500"></div>
+        <div class="field"><label for="c-p">Share that can be automated <output id="c-p-out" for="c-p">60 %</output></label><input id="c-p" type="range" min="10" max="90" step="5" value="60"></div>
+      </form>
+      <div class="result" aria-live="polite">
+        <div>
+          <p class="rl">Time that could be freed up</p>
+          <p class="big"><span id="r-h">0</span><small>hours / month</small></p>
+        </div>
+        <div>
+          <p class="rl">Equivalent cost</p>
+          <p class="big"><span id="r-m">0</span><small>SEK / month</small></p>
+        </div>
+        <p class="fine">Simplified estimate (4.33 weeks per month). Actual savings vary and are assessed in a first conversation. It is not a promise.</p>
+        <a class="btn btn-signal" id="calc-cta" href="#contact">Discuss an automation project</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="rv">
+      <p class="eyebrow">FAQ</p>
+      <h2>Answers to what most people ask.</h2>
+    </div>
+    <div class="faq rv"><details><summary>What is business automation?</summary><p>Business automation means recurring tasks are carried out by systems instead of by hand, for example moving data between programs, sending confirmations, producing reports or sorting incoming email. The aim is to save time, reduce errors and let staff focus on work that needs people.</p></details><details><summary>When should a company automate?</summary><p>When the same task is done often, follows the same rules and takes noticeable time, or when information has to be entered in several places. Tasks that are rare or need a lot of judgement are usually not worth automating first.</p></details><details><summary>What is an AI agent and what can it do?</summary><p>An AI agent is software that can read information, make simple decisions and carry out steps in your systems to reach a goal, for example sorting incoming email, summarising documents or answering common customer questions. We build in review and limits so a person has the final say where it matters.</p></details><details><summary>What is local AI and how does it differ from cloud AI?</summary><p>Local AI means the AI model runs on a server you control instead of with an external provider. That gives you more control over where data is processed. The trade-off is that local models can be less capable than the largest cloud models, and hardware and operations need to be factored in.</p></details><details><summary>Is local AI secure and GDPR-compliant?</summary><p>Local AI can give you better control over data, but it is not automatically secure or GDPR-compliant. That depends on how the solution is set up, what data is handled and how it is operated. We therefore make no absolute guarantees. It needs a technical and legal assessment for your situation.</p></details><details><summary>How does n8n work?</summary><p>n8n is a workflow tool. An event, such as a new email or booking, starts a chain of steps that connect your systems. n8n has many ready-made integrations and can also connect to custom APIs. It can run in your own environment or as a cloud service.</p></details><details><summary>Do we need to replace our systems to automate?</summary><p>Usually not. We connect the tools you already use through their integrations or APIs. If a system cannot be connected, we will tell you and suggest alternatives.</p></details><details><summary>What does it cost?</summary><p>It depends on the scope. We work with a fixed scope and give you a clear proposal with a price after a first conversation, so you know what is included before we start. The first conversation is free.</p></details><details><summary>How long does a project take?</summary><p>It depends on how many systems and steps are involved. A well-defined workflow is quicker than a larger integration or a custom application. We provide a timeline after the initial analysis.</p></details><details><summary>Can you build and maintain our website?</summary><p>Yes. We design and develop websites from scratch and offer ongoing support and maintenance so the site stays working, secure and up to date.</p></details></div>
+  </div>
+</section>
+
+<section class="sec contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="rv">
+      <p class="eyebrow">Contact</p>
+      <h2>Tell us what you want to achieve.</h2>
+      <p class="lead">Describe your situation briefly and we will get back to you within one business day. The first conversation is free and carries no obligation.</p>
+      <p style="margin-top:1.75rem" class="muted">Or email us directly:</p>
+      <a class="mail" href="mailto:contact@arnellcompany.se">contact@arnellcompany.se</a>
+    </div>
+    <form class="cform rv" id="contact-form" data-endpoint="https://formsubmit.co/ajax/contact@arnellcompany.se" novalidate>
+      <div class="two">
+        <div><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+        <div><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+      </div>
+      <div><label for="f-company">Company <span class="opt">(optional)</span></label><input id="f-company" name="company" type="text" autocomplete="organization"></div>
+      <div><label for="f-topic">What is it about?</label><select id="f-topic" name="topic"><option value="automation">Business automation</option><option value="ai">AI automation / AI agents</option><option value="local-ai">Local or private AI</option><option value="web">Website or web application</option><option value="integration">Integration / IT consulting</option><option value="other">Something else / not sure yet</option></select></div>
+      <div><label for="f-msg">Message</label><textarea id="f-msg" name="message" placeholder="What would you like to achieve or improve?" required></textarea></div>
+      <div class="hp" aria-hidden="true"><label>Leave empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+      <label class="consent"><input type="checkbox" name="consent" required><span>I agree that Arnell Company processes my details to respond to my enquiry. Read more under <a href="#privacy">Privacy</a>.</span></label>
+      <button class="btn btn-primary" type="submit">Send enquiry</button>
+      <p class="status" id="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <img src="/logo.png" width="160" height="30" alt="Arnell Company" loading="lazy">
+        <p class="muted">Automation, AI and web for businesses.</p>
+      </div>
+      <nav aria-label="Navigation">
+        <p class="fh">Navigation</p>
+        <ul><li><a href="#services">Services</a></li><li><a href="#automation">Business automation</a></li><li><a href="#ai">AI agents</a></li><li><a href="#local-ai">Local AI</a></li><li><a href="#web">Web &amp; integrations</a></li><li><a href="#faq">FAQ</a></li></ul>
+      </nav>
+      <div>
+        <p class="fh">Contact</p>
+        <ul><li><a href="mailto:contact@arnellcompany.se">contact@arnellcompany.se</a></li></ul>
+        <p class="fh" style="margin-top:1.5rem">Language</p>
+        <span class="lang" role="group" aria-label="Language"><a href="/" hreflang="sv" lang="sv" data-lang-link>SV</a><a href="/en/" hreflang="en" lang="en" aria-current="true">EN</a></span>
+      </div>
+    </div>
+    <div id="privacy"><p class="fh">Privacy</p><p>The details you send through the contact form are used only to respond to your enquiry and to follow up on the contact. We do not sell them or share them with third parties for marketing. The form is delivered to us as an email via the FormSubmit service. If you would like your details deleted, email us. This website does not use marketing cookies.</p></div>
+    <div class="legal"><span>© 2026 Arnell Company. All rights reserved.</span><a href="#top">Back to top ↑</a></div>
+  </div>
+</footer>
+
+<script>window.I18N={"lang": "en", "locale": "en-GB", "email": "contact@arnellcompany.se", "subject": "New enquiry from arnellcompany.se (en)", "sending": "Sending …", "ok": "Thank you! We have received your enquiry and will reply within one business day.", "err": "Something went wrong. Please write directly to", "calcMsg": "Hi! I would like to discuss automating a recurring task. It is done about {n} times a week and takes about {min} minutes each time. According to the calculator, that is roughly {h} hours a month that could be freed up."};</script>
+<script>
+(function(){
+  'use strict';
+  var D=document, W=window, I=W.I18N||{};
+  D.documentElement.classList.add('js');
+
+  /* ---- tracking: pushes to dataLayer, and forwards to gtag / plausible if you add them ---- */
+  function track(name,params){
+    try{
+      W.dataLayer=W.dataLayer||[];
+      W.dataLayer.push(Object.assign({event:name},params||{}));
+      if(typeof W.gtag==='function'){W.gtag('event',name,params||{});}
+      if(typeof W.plausible==='function'){W.plausible(name,{props:params||{}});}
+    }catch(e){}
+  }
+
+  /* ---- mobile menu ---- */
+  var btn=D.getElementById('menu-btn'), links=D.getElementById('nav-links');
+  if(btn&&links){
+    btn.addEventListener('click',function(){
+      var open=links.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open?'true':'false');
+    });
+    links.addEventListener('click',function(e){
+      if(e.target.closest('a[href^="#"]')){links.classList.remove('open');btn.setAttribute('aria-expanded','false');}
+    });
+    D.addEventListener('keydown',function(e){
+      if(e.key==='Escape'&&links.classList.contains('open')){links.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.focus();}
+    });
+  }
+
+  /* ---- reveal on scroll ---- */
+  var rv=[].slice.call(D.querySelectorAll('.rv'));
+  if('IntersectionObserver' in W){
+    var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.05});
+    rv.forEach(function(el){ro.observe(el);});
+  }else{rv.forEach(function(el){el.classList.add('in');});}
+
+  /* ---- language switch keeps the current section ---- */
+  var current='';
+  var secs=[].slice.call(D.querySelectorAll('main section[id]'));
+  if('IntersectionObserver' in W){
+    var so=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){current=e.target.id;}});
+    },{rootMargin:'-35% 0px -55% 0px'});
+    secs.forEach(function(s){so.observe(s);});
+  }
+  [].forEach.call(D.querySelectorAll('[data-lang-link]'),function(a){
+    a.addEventListener('click',function(e){
+      var id=(W.location.hash||'').replace('#','')||current;
+      var base=a.getAttribute('href').split('#')[0];
+      track('language_switch',{to:a.getAttribute('hreflang')});
+      if(id&&id!=='top'){e.preventDefault();W.location.href=base+'#'+id;}
+    });
+  });
+
+  /* ---- CTA / email tracking ---- */
+  D.addEventListener('click',function(e){
+    var a=e.target.closest('a');
+    if(!a)return;
+    if(a.classList.contains('btn')){track('cta_click',{label:(a.textContent||'').trim().slice(0,60),target:a.getAttribute('href')});}
+    if((a.getAttribute('href')||'').indexOf('mailto:')===0){track('email_click');}
+  });
+
+  /* ---- calculator ---- */
+  var calc=D.getElementById('calc');
+  if(calc){
+    var f=function(id){return D.getElementById(id);};
+    var nf=new Intl.NumberFormat(I.locale||'sv-SE',{maximumFractionDigits:0});
+    var touched=false;
+    var update=function(){
+      var n=Math.max(0,parseFloat(f('c-n').value)||0);
+      var m=Math.max(0,parseFloat(f('c-m').value)||0);
+      var r=Math.max(0,parseFloat(f('c-r').value)||0);
+      var p=parseFloat(f('c-p').value)||0;
+      f('c-p-out').textContent=p+' %';
+      var hours=n*m/60*4.33*(p/100);
+      var money=hours*r;
+      f('r-h').textContent=nf.format(hours);
+      f('r-m').textContent=nf.format(money);
+      calc.dataset.hours=Math.round(hours);
+      calc.dataset.money=Math.round(money);
+    };
+    calc.addEventListener('input',function(){update();if(!touched){touched=true;track('calculator_use');}});
+    update();
+    var cc=D.getElementById('calc-cta');
+    if(cc){cc.addEventListener('click',function(){
+      var msg=D.getElementById('f-msg');
+      if(msg&&!msg.value){
+        msg.value=(I.calcMsg||'').replace('{h}',nf.format(calc.dataset.hours)).replace('{m}',nf.format(calc.dataset.money)).replace('{n}',f('c-n').value).replace('{min}',f('c-m').value);
+      }
+      var sel=D.getElementById('f-topic');if(sel)sel.value='automation';
+    });}
+  }
+
+  /* ---- contact form ---- */
+  var form=D.getElementById('contact-form');
+  if(form){
+    var status=D.getElementById('form-status');
+    var submit=form.querySelector('button[type=submit]');
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      status.className='status';status.textContent='';
+      if(!form.checkValidity()){form.reportValidity();return;}
+      var data=new FormData(form);
+      if(data.get('_honey')){return;}
+      var payload={
+        name:data.get('name'),email:data.get('email'),company:data.get('company')||'-',
+        topic:form.topic.options[form.topic.selectedIndex].text,message:data.get('message'),
+        language:I.lang,_subject:I.subject,_template:'table',_captcha:'false'
+      };
+      submit.disabled=true;var old=submit.textContent;submit.textContent=I.sending;
+      fetch(form.dataset.endpoint,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
+        .then(function(r){if(!r.ok)throw new Error('http '+r.status);return r.json();})
+        .then(function(){
+          status.className='status ok';status.textContent=I.ok;form.reset();
+          track('generate_lead',{form:'contact',language:I.lang,topic:payload.topic});
+        })
+        .catch(function(){
+          status.className='status err';
+          status.innerHTML=I.err+' <a href="mailto:'+I.email+'">'+I.email+'</a>';
+          track('form_error');
+        })
+        .then(function(){submit.disabled=false;submit.textContent=old;});
+    });
+  }
+})();
+
+</script>
 </body>
 </html>
