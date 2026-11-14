@@ -88,7 +88,7 @@
       if(msg&&!msg.value){
         msg.value=(I.calcMsg||'').replace('{h}',nf.format(calc.dataset.hours)).replace('{m}',nf.format(calc.dataset.money)).replace('{n}',f('c-n').value).replace('{min}',f('c-m').value);
       }
-      var sel=D.getElementById('f-topic');if(sel)sel.value='automation';
+      var sel=D.getElementById('f-topic');if(sel)sel.value='other';
     });}
   }
 
