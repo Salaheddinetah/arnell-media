@@ -106,12 +106,17 @@
       var payload={
         name:data.get('name'),email:data.get('email'),company:data.get('company')||'-',
         topic:form.topic.options[form.topic.selectedIndex].text,message:data.get('message'),
-        language:I.lang,_subject:I.subject,_template:'table',_captcha:'false'
+        language:I.lang,page:W.location.href,
+        _subject:I.subject,_replyto:data.get('email'),_template:'table',_captcha:'false'
       };
+      if(I.cc){payload._cc=I.cc;}
       submit.disabled=true;var old=submit.textContent;submit.textContent=I.sending;
       fetch(form.dataset.endpoint,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
         .then(function(r){if(!r.ok)throw new Error('http '+r.status);return r.json();})
-        .then(function(){
+        .then(function(j){
+          /* FormSubmit answers HTTP 200 even when it refuses (e.g. "This form needs Activation"),
+             so only treat an explicit success as sent. */
+          if(!j||String(j.success)!=='true'){throw new Error((j&&j.message)||'not sent');}
           status.className='status ok';status.textContent=I.ok;form.reset();
           track('generate_lead',{form:'contact',language:I.lang,topic:payload.topic});
         })

@@ -8,44 +8,61 @@ Both files are complete, static, single-page HTML documents (CSS + JS inlined),
 so search engines see fully rendered content in each language.
 Edit copy in the CONTENT dict below, design in src/style.css, behaviour in src/script.js.
 """
-import json, html, pathlib
+import json, html, pathlib, subprocess, datetime
 
 ROOT = pathlib.Path(__file__).parent
 DOMAIN = "https://arnellcompany.se"
 EMAIL = "contact@arnellcompany.se"
+CC_EMAIL = "eddy@arnellcompany.se"   # gets a copy of every form submission (FormSubmit _cc)
 FORM_ENDPOINT = "https://formsubmit.co/ajax/" + EMAIL   # works after first-submission email confirmation
 YEAR = 2026
+
+# Organization details for Google (structured data). Fill in when ready; empty values are left out.
+ORG_LEGAL_NAME = ""      # registered company name
+ORG_NR = ""              # organisationsnummer, e.g. "559XXX-XXXX"  -> schema taxID
+VAT_ID = ""              # momsregistreringsnummer, e.g. "SE559XXXXXXX01" -> schema vatID
+SAME_AS = []             # public profiles: LinkedIn company page, GitHub, n8n creator page …
+
+def last_modified():
+    """Date of the last git commit (what Google wants for sitemap lastmod), else today."""
+    try:
+        out = subprocess.run(["git", "log", "-1", "--format=%cs"], cwd=ROOT, capture_output=True, text=True, timeout=10)
+        if out.returncode == 0 and out.stdout.strip():
+            return out.stdout.strip()
+    except Exception:
+        pass
+    return datetime.date.today().isoformat()
 
 e = html.escape
 
 CONTENT = {
 "sv": dict(
     lang="sv", locale="sv-SE", og_locale="sv_SE", og_alt="en_GB", path="/",
-    title="Arnell Company – Integrationer och automation för små företag",
-    desc="Jag kopplar ihop de system ert företag redan använder – Fortnox, e-handel, lager, bokning och rekrytering – och automatiserar det som görs för hand. Fast pris per flöde.",
-    og_title="Arnell Company – Integrationer och automation för små företag",
+    title="n8n-integrationer och automation för små företag | Arnell Company",
+    desc="Vi kopplar ihop de system ert företag redan använder – Fortnox, Shopify, Ongoing WMS, Teamtailor och bokning – och automatiserar det som görs för hand med n8n. Ett litet team i Sverige. Fast pris per flöde.",
+    og_title="n8n-integrationer och automation för små företag | Arnell Company",
     skip="Hoppa till innehållet",
     nav=[("services","Branscher"),("flows","Exempel"),("pricing","Pris"),("faq","Vanliga frågor")],
-    nav_cta="Kontakta mig", menu="Meny", lang_label="Språk",
+    nav_cta="Kontakta oss", menu="Meny", lang_label="Språk",
     hero_eyebrow="Integrationer · Automation · n8n · Fortnox",
     hero_h1="Era system ska prata med varandra. <em>Inte genom er.</em>",
-    hero_lead="Jag bygger integrationer och automatiska flöden mellan de system ni redan betalar för – bokföring, webbshop, lager, bokning och rekrytering. Det som i dag kopieras, jagas eller stäms av för hand sköts av ett flöde som övervakas.",
+    hero_lead="Vi är ett litet team som bygger integrationer och automatiska flöden i n8n mellan de system ni redan betalar för – bokföring, webbshop, lager, bokning och rekrytering. Det som i dag kopieras, jagas eller stäms av för hand sköts av ett flöde som övervakas.",
     hero_cta1="Boka ett kostnadsfritt samtal (30 min)", hero_cta2="Se branscher och exempel",
     hero_notes=["Svar inom en arbetsdag","Fast pris per flöde"],
     term_title="Exempel: underlagsjakt för redovisningsbyrå", term_status="körs",
     term_lines=[("06:00","Kontroll mot Fortnox: 14 klienter"),("06:00","3 klienter saknar underlag för oktober"),("06:01","Påminnelse skickad till 3 klienter"),("06:01","Avvikelse loggad – handläggare notifierad"),("06:02","Veckorapport uppdaterad")],
     term_foot="Illustration. Varje flöde byggs efter era system och regler.",
     value_eyebrow="Varför Arnell Company",
-    value_h2="En utvecklare, ett flöde i taget.",
-    value_lead="Du pratar direkt med mig som bygger lösningen. Jag börjar med det som kostar mest tid, bygger ett flöde till fast pris och tar hand om det efteråt. Finns det redan en färdig app som löser problemet säger jag det.",
+    value_h2="Ett litet team, ett flöde i taget.",
+    value_lead="Ni pratar direkt med oss som bygger lösningen. Vi börjar med det som kostar mest tid, bygger ett flöde till fast pris och tar hand om det efteråt. Finns det redan en färdig app som löser problemet säger vi det.",
     value_items=[
         ("Ett flöde i taget","Vi börjar avgränsat. När det första flödet fungerar tar vi nästa."),
-        ("Fast pris","Omfattning och pris bestäms innan jag börjar – inga överraskande fakturor."),
+        ("Fast pris","Omfattning och pris bestäms innan vi börjar – inga överraskande fakturor."),
         ("Era system, er data","Varje kund får en egen n8n-installation. Flödena tillhör er."),
-        ("Övervakat","Varje flöde loggar fel och larmar mig, så att problem upptäcks tidigt."),
+        ("Övervakat","Varje flöde loggar fel och larmar oss, så att problem upptäcks tidigt."),
     ],
     svc_eyebrow="Branscher",
-    svc_h2="Fem typer av företag jag bygger för.",
+    svc_h2="Fem typer av företag vi bygger för.",
     svc_more="Se exempel",
     svc=[
         ("flows","Redovisningsbyråer","Underlag som jagas automatiskt inför moms och AGI, och en översikt över tid och lönsamhet per klient."),
@@ -55,9 +72,9 @@ CONTENT = {
         ("flows","Bemanning & rekrytering","Från tillsatt kandidat i Teamtailor till fakturautkast i Fortnox, med rapporter per kund."),
     ],
     a_tag="01 · Så fungerar det",
-    a_h2="Ni behåller era system. Jag bygger det som saknas mellan dem.",
+    a_h2="Ni behåller era system. Vi bygger det som saknas mellan dem.",
     a_p=["De flesta företag har redan bra system för bokföring, försäljning och bokning. Problemet är det som händer mellan dem: uppgifter som förs över för hand, avstämningar i Excel och påminnelser som någon måste komma ihåg.",
-         "Jag bygger flödena i n8n, ett verktyg för arbetsflöden där en händelse – en betald faktura, en ny order, en tillsatt kandidat – startar en kedja av kontroller och steg. Varje kund får en egen n8n-installation, och jag övervakar flödena löpande."],
+         "Vi bygger flödena i n8n, ett verktyg för arbetsflöden där en händelse – en betald faktura, en ny order, en tillsatt kandidat – startar en kedja av kontroller och steg. Varje kund får en egen n8n-installation, och vi övervakar flödena löpande."],
     a_signs_h="Tecken på att ni behöver ett flöde",
     a_signs=["Samma uppgifter skrivs in i två eller fler system.","Någon stämmer av siffror mellan system varje vecka eller månad.","Ni jagar kunder, klienter eller kollegor på samma uppgifter om och om igen.","Rapporten ni vill ha kräver data från flera system."],
     a_ex_h="Det här brukar flödena göra",
@@ -66,8 +83,8 @@ CONTENT = {
     flow=[("IN","Retur registreras","I lagersystemet (Ongoing WMS)"),("n8n","Flödet startar","Ordern matchas och kontrolleras"),("SHOP","Återbetalning förbereds","Utkast i webbshopen för godkännande"),("FTX","Kreditfaktura","Utkast skapas i Fortnox"),("OUT","Avvikelser larmas","Ni får en notis om något inte stämmer")],
     a_benefit="Resultatet: färre manuella steg, färre missade fel och siffror ni kan lita på.",
     b_tag="02 · Exempel på flöden",
-    b_h2="Konkreta flöden, inte allmän automation.",
-    b_lead="Några exempel på vad jag bygger. Varje flöde avgränsas och prissätts för sig, och byggs efter era system och regler.",
+    b_h2="Konkreta n8n-flöden mellan Fortnox, webbshop, lager och Teamtailor.",
+    b_lead="Några exempel på vad vi bygger. Varje flöde avgränsas och prissätts för sig, och byggs efter era system och regler.",
     b_items=[
         ("Underlagsjakten · redovisningsbyrå","Kontrollerar varje natt vilka klienter som saknar underlag i Fortnox och skickar påminnelser inför moms- och AGI-deadlines."),
         ("Klientöversikt · redovisningsbyrå","Tid, ofakturerat arbete och intäkt per klient i en veckorapport, med flagga när marginalen är för låg."),
@@ -79,9 +96,9 @@ CONTENT = {
         ("Tillsättning till faktura · bemanning","När en kandidat markeras som anställd i Teamtailor skapas kund och fakturautkast i Fortnox."),
     ],
     b_note="Flöden för kliniker hanterar aldrig journaluppgifter, bilder eller behandlingsdetaljer – bara kontaktuppgifter, tider, belopp och samtycke.",
-    c_tag="03 · Det här bygger jag inte",
-    c_h2="Finns det redan en färdig app säger jag det.",
-    c_lead="Många vanliga kopplingar löses redan av färdiga appar för några hundra kronor i månaden. Då är det bättre att ni använder dem. Jag bygger det som ligger mellan systemen och som ingen app gör åt er.",
+    c_tag="03 · Det här bygger vi inte",
+    c_h2="Finns det redan en färdig app säger vi det.",
+    c_lead="Många vanliga kopplingar löses redan av färdiga appar för några hundra kronor i månaden. Då är det bättre att ni använder dem. Vi bygger det som ligger mellan systemen och som ingen app gör åt er.",
     infra_env="Er egen miljö", infra_in=("Era system","Fortnox, webbshop, lager, ATS"), infra_core=("Egen n8n-installation","en per kund"), infra_out=("Kontroller & rapporter","larm, utkast, översikter"),
     infra_ext_s="Hålls utanför", infra_ext_b="Känsliga uppgifter", infra_ext_t="Journaler och hälsodata flyttas aldrig",
     c_adv_h="Det här köper ni hellre färdigt",
@@ -93,17 +110,17 @@ CONTENT = {
               ("Kostnad","Månadsavgift, ofta låg","Fast pris för bygget och en månadsavgift för drift"),
               ("Anpassning","Begränsad till appens inställningar","Era regler och undantag"),
               ("Antal system","Oftast två","Så många som behövs"),
-              ("Ansvar","Leverantören","Jag, enligt avtal")],
+              ("Ansvar","Leverantören","Vi, enligt avtal")],
     c_note="En egen installation ger bättre kontroll, men är inte automatiskt säker eller GDPR-anpassad. Hur data hanteras bedöms för varje flöde.",
     d_tag="04 · Pris",
-    d_h2="Så prissätter jag.",
-    d_lead="Inget timpris som tickar. Ni får ett fast pris för varje flöde innan jag börjar, och en månadsavgift som täcker drift, övervakning och mindre justeringar. Exakt pris lämnas efter det första samtalet.",
+    d_h2="Så prissätter vi.",
+    d_lead="Inget timpris som tickar. Ni får ett fast pris för varje flöde innan vi börjar, och en månadsavgift som täcker drift, övervakning och mindre justeringar. Exakt pris lämnas efter det första samtalet.",
     d_col1=("Det här betalar ni för",["Kostnadsfritt första samtal, 30 minuter","Förstudie för större uppdrag – avräknas mot bygget","Fast pris per flöde","Månadsavgift för drift och övervakning","Servrar och licenser till självkostnad"]),
     d_col2=("Det här ingår alltid",["Felloggning och larm","Dokumentation av varje flöde","Test med verkliga data innan start","Justeringar när ett system ändras","Ni äger flödena"]),
-    p_eyebrow="Så arbetar jag", p_h2="Fyra steg, ett flöde i taget.",
-    p_steps=[("Samtal","30 minuter om vad som tar tid och vilka system ni har. Kostnadsfritt."),("Förslag","Ett avgränsat flöde med fast pris och tidsplan. Jag kontrollerar först om en färdig app räcker."),("Bygge och test","Jag bygger flödet i er egen n8n-miljö och testar med verkliga data."),("Drift","Flödet övervakas löpande. När det fungerar tar vi nästa.")],
+    p_eyebrow="Så arbetar vi", p_h2="Fyra steg, ett flöde i taget.",
+    p_steps=[("Samtal","30 minuter om vad som tar tid och vilka system ni har. Kostnadsfritt."),("Förslag","Ett avgränsat flöde med fast pris och tidsplan. Vi kontrollerar först om en färdig app räcker."),("Bygge och test","Vi bygger flödet i er egen n8n-miljö och testar med verkliga data."),("Drift","Flödet övervakas löpande. När det fungerar tar vi nästa.")],
     u_eyebrow="Passar bäst för", u_h2="Företag som har systemen men saknar kopplingen.",
-    u_lead="Mina kunder har oftast 2–50 anställda och använder flera system som inte pratar med varandra.",
+    u_lead="Våra kunder har oftast 2–50 anställda och använder flera system som inte pratar med varandra.",
     u_items=[("Ni använder Fortnox eller Bokio","Och minst ett system till – webbshop, lager, rekryteringssystem eller bokning."),("Någon gör samma sak varje vecka","Avstämningar, påminnelser eller rapporter som tar timmar."),("Fel kostar pengar","Missade deadlines, fel lagersaldo eller fakturor som aldrig skickas."),("Ni vill äga lösningen","Flödena dokumenteras och tillhör er, även om ni byter leverantör."),("Mindre bra passform","Om en färdig app löser problemet, eller om ni bara behöver en enstaka export.")],
     k_eyebrow="Räkna på det", k_h2="Hur mycket tid går åt till manuellt arbete mellan systemen?",
     k_lead="Fyll i en uppgift som görs om och om igen. Resultatet är en enkel uppskattning baserad på era egna siffror.",
@@ -114,58 +131,60 @@ CONTENT = {
     k_msg="Hej! Jag vill diskutera ett flöde för en återkommande uppgift. Den utförs ca {n} gånger i veckan och tar ca {min} minuter varje gång. Enligt kalkylatorn motsvarar det ca {h} timmar i månaden.",
     f_eyebrow="Vanliga frågor", f_h2="Svar på det de flesta undrar över.",
     faq=[
-        ("Vad gör du, kort?","Jag kopplar ihop de system ett företag redan använder och automatiserar återkommande arbete mellan dem, till exempel påminnelser, avstämningar, utkast i Fortnox och rapporter. Jag bygger i n8n och tar hand om flödena efteråt."),
-        ("Bygger du AI-chattbotar?","Nej, det är inte mitt fokus. Jag bygger integrationer och automatiska flöden. Där AI gör nytta, till exempel för att läsa av ett dokument, kan det ingå som ett steg i ett flöde."),
-        ("Varför inte Zapier eller en färdig app?","Om en färdig app löser ert behov rekommenderar jag den. Ett eget flöde lönar sig när ni har egna regler, flera system eller system som saknar färdiga kopplingar."),
-        ("Behöver vi Fortnox integrationslicens?","Ja, integrationer mot Fortnox kräver Fortnox integrationslicens. Den ingår i vissa av Fortnox paket och kan annars läggas till. Jag hjälper er att kontrollera vad som gäller för er."),
+        ("Vad gör ni, kort?","Vi är ett litet team som kopplar ihop de system ett företag redan använder och automatiserar återkommande arbete mellan dem, till exempel påminnelser, avstämningar, utkast i Fortnox och rapporter. Vi bygger i n8n och tar hand om flödena efteråt."),
+        ("Arbetar ni som n8n-konsulter?","Ja. Vi bygger, driftsätter och underhåller arbetsflöden i n8n åt små företag i Sverige. Varje kund får en egen n8n-installation, och vi övervakar flödena så att fel upptäcks."),
+        ("Kan ni koppla vårt system till Fortnox?","Oftast, om systemet har ett API, webhooks eller exporter. Vi kollar först om det redan finns en färdig integration på Fortnox marknadsplats. Räcker den rekommenderar vi den."),
+        ("Bygger ni AI-chattbotar?","Nej, det är inte vårt fokus. Vi bygger integrationer och automatiska flöden. Där AI gör nytta, till exempel för att läsa av ett dokument, kan det ingå som ett steg i ett flöde."),
+        ("Varför inte Zapier eller en färdig app?","Om en färdig app löser ert behov rekommenderar vi den. Ett eget flöde lönar sig när ni har egna regler, flera system eller system som saknar färdiga kopplingar."),
+        ("Behöver vi Fortnox integrationslicens?","Ja, integrationer mot Fortnox kräver Fortnox integrationslicens. Den ingår i vissa av Fortnox paket och kan annars läggas till. Vi hjälper er att kontrollera vad som gäller för er."),
         ("Vem äger flödena?","Ni. Varje kund får en egen n8n-installation och flödena dokumenteras. Om vi slutar samarbeta kan ni ta över dem själva eller lämna dem till någon annan."),
-        ("Vad händer om ett system ändras?","Flödena loggar fel och larmar mig. Mindre justeringar när ett system ändras ingår i månadsavgiften."),
-        ("Hur hanteras personuppgifter?","Jag är personuppgiftsbiträde och tecknar ett avtal med varje kund. Flödena hanterar bara de uppgifter som behövs och driften sker inom EU. Det gör inte en lösning automatiskt GDPR-anpassad – det bedöms för varje flöde."),
+        ("Vad händer om ett system ändras?","Flödena loggar fel och larmar oss. Mindre justeringar när ett system ändras ingår i månadsavgiften."),
+        ("Hur hanteras personuppgifter?","Vi är personuppgiftsbiträde och tecknar ett avtal med varje kund. Flödena hanterar bara de uppgifter som behövs och driften sker inom EU. Det gör inte en lösning automatiskt GDPR-anpassad – det bedöms för varje flöde."),
         ("Hur lång tid tar det?","Det beror främst på hur snabbt vi får åtkomst till era system. Ett avgränsat flöde går fort när åtkomsten är på plats. Ni får en tidsplan i förslaget."),
-        ("Vad kostar det?","Fast pris per flöde och en månadsavgift för drift. Exakt pris lämnas efter första samtalet, när jag vet vilka system som ingår. Samtalet är kostnadsfritt."),
-        ("Bygger du fortfarande webbplatser?","Ja, men mitt fokus är integrationer och automation. Hör av dig om du behöver båda."),
+        ("Vad kostar det?","Fast pris per flöde och en månadsavgift för drift. Exakt pris lämnas efter första samtalet, när vi vet vilka system som ingår. Samtalet är kostnadsfritt."),
+        ("Bygger ni fortfarande webbplatser?","Ja, men vårt fokus är integrationer och automation. Hör av dig om du behöver båda."),
     ],
     t_eyebrow="Kontakt", t_h2="Berätta vad som tar tid i dag.",
-    t_lead="Skriv kort vilka system ni använder och vad som görs för hand. Jag svarar inom en arbetsdag. Första samtalet är kostnadsfritt och förpliktar till ingenting.",
+    t_lead="Skriv kort vilka system ni använder och vad som görs för hand. Vi svarar inom en arbetsdag. Första samtalet är kostnadsfritt och förpliktar till ingenting.",
     t_cta_mail="Eller mejla direkt:",
     form=dict(name="Namn",email="E-post",company="Företag",optional="valfritt",topic="Vilken bransch?",msg="Meddelande",msg_ph="Vilka system använder ni och vad görs för hand i dag?",
               topics=[("accounting","Redovisningsbyrå"),("ecommerce","E-handel / lager"),("clinic","Klinik"),("installer","Installatör (sol, batteri, laddbox, värmepump)"),("staffing","Bemanning / rekrytering"),("other","Annat / vet inte än")],
               consent="Jag godkänner att Arnell Company behandlar mina uppgifter för att besvara min förfrågan. Läs mer under",consent_link="Integritet",send="Skicka förfrågan",sending="Skickar …",
-              ok="Tack! Jag har fått din förfrågan och svarar inom en arbetsdag.",err="Något gick fel. Skriv gärna direkt till"),
-    foot_tag="Integrationer och automation för små företag.", foot_nav="Navigering", foot_contact="Kontakt", foot_lang="Språk",
-    foot_links=[("services","Branscher"),("how","Så fungerar det"),("flows","Exempel på flöden"),("scope","Det här bygger jag inte"),("pricing","Pris"),("faq","Vanliga frågor")],
-    priv_h="Integritet", priv_p="Uppgifterna du skickar via kontaktformuläret används bara för att besvara din förfrågan och följa upp kontakten. Jag säljer inte uppgifterna och delar dem inte med tredje part för marknadsföring. Formuläret levereras som e-post via tjänsten FormSubmit. Vill du att jag raderar dina uppgifter kan du mejla mig. Webbplatsen använder inga marknadsföringscookies.",
+              ok="Tack! Vi har fått din förfrågan och svarar inom en arbetsdag.",err="Något gick fel. Skriv gärna direkt till"),
+    foot_tag="Integrationer och automation med n8n för små företag.", foot_nav="Navigering", foot_contact="Kontakt", foot_lang="Språk",
+    foot_links=[("services","Branscher"),("how","Så fungerar det"),("flows","Exempel på flöden"),("scope","Det här bygger vi inte"),("pricing","Pris"),("faq","Vanliga frågor")],
+    priv_h="Integritet", priv_p="Uppgifterna du skickar via kontaktformuläret används bara för att besvara din förfrågan och följa upp kontakten. Vi säljer inte uppgifterna och delar dem inte med tredje part för marknadsföring. Formuläret levereras som e-post via tjänsten FormSubmit. Vill du att vi raderar dina uppgifter kan du mejla oss. Webbplatsen använder inga marknadsföringscookies.",
     rights="Alla rättigheter förbehållna.", to_top="Till toppen",
     subject="Ny förfrågan från arnellcompany.se (sv)",
-    schema_desc="Arnell Company bygger integrationer och automatiska flöden i n8n för små företag i Sverige: redovisningsbyråer, e-handel, kliniker, installatörer och bemanningsföretag.",
+    schema_desc="Arnell Company är ett litet team i Sverige som bygger integrationer och automatiska flöden i n8n för små företag: redovisningsbyråer, e-handel, kliniker, installatörer och bemanningsföretag.",
 ),
 "en": dict(
     lang="en", locale="en-GB", og_locale="en_GB", og_alt="sv_SE", path="/en/",
-    title="Arnell Company – Integrations and Automation for Small Businesses",
-    desc="I connect the systems your business already uses – Fortnox, e-commerce, warehouse, booking and recruitment – and automate the work done by hand. Fixed price per workflow.",
-    og_title="Arnell Company – Integrations and Automation for Small Businesses",
+    title="n8n integrations and automation for small businesses in Sweden | Arnell Company",
+    desc="We connect the systems your business already uses – Fortnox, Shopify, Ongoing WMS, Teamtailor and booking – and automate the work done by hand with n8n. A small team in Sweden. Fixed price per workflow.",
+    og_title="n8n integrations and automation for small businesses in Sweden | Arnell Company",
     skip="Skip to content",
     nav=[("services","Industries"),("flows","Examples"),("pricing","Pricing"),("faq","FAQ")],
     nav_cta="Get in touch", menu="Menu", lang_label="Language",
     hero_eyebrow="Integrations · Automation · n8n · Fortnox",
     hero_h1="Your systems should talk to each other. <em>Not through you.</em>",
-    hero_lead="I build integrations and automated workflows between the systems you already pay for – accounting, web shop, warehouse, booking and recruitment. What is copied, chased or reconciled by hand today is handled by a monitored workflow.",
+    hero_lead="We are a small team building integrations and automated workflows in n8n between the systems you already pay for – accounting, web shop, warehouse, booking and recruitment. What is copied, chased or reconciled by hand today is handled by a monitored workflow.",
     hero_cta1="Book a free 30-minute call", hero_cta2="See industries and examples",
     hero_notes=["Reply within one business day","Fixed price per workflow"],
     term_title="Example: missing-documents check for an accounting firm", term_status="running",
     term_lines=[("06:00","Check against Fortnox: 14 clients"),("06:00","3 clients missing October documents"),("06:01","Reminder sent to 3 clients"),("06:01","Exception logged – accountant notified"),("06:02","Weekly report updated")],
     term_foot="Illustration. Every workflow is built around your systems and rules.",
     value_eyebrow="Why Arnell Company",
-    value_h2="One developer, one workflow at a time.",
-    value_lead="You talk directly to me, the person building the solution. I start with what costs you the most time, build one workflow at a fixed price and look after it afterwards. If a ready-made app already solves the problem, I will tell you.",
+    value_h2="A small team, one workflow at a time.",
+    value_lead="You talk directly to us, the people building the solution. We start with what costs you the most time, build one workflow at a fixed price and look after it afterwards. If a ready-made app already solves the problem, we will tell you.",
     value_items=[
         ("One workflow at a time","We start small. Once the first workflow works, we take the next."),
-        ("Fixed price","Scope and price are agreed before I start – no surprise invoices."),
+        ("Fixed price","Scope and price are agreed before we start – no surprise invoices."),
         ("Your systems, your data","Every client gets their own n8n installation. The workflows are yours."),
-        ("Monitored","Every workflow logs errors and alerts me, so problems are caught early."),
+        ("Monitored","Every workflow logs errors and alerts us, so problems are caught early."),
     ],
     svc_eyebrow="Industries",
-    svc_h2="Five kinds of business I build for.",
+    svc_h2="Five kinds of business we build for.",
     svc_more="See examples",
     svc=[
         ("flows","Accounting firms","Automatic chasing of missing client documents before VAT and payroll deadlines, plus an overview of hours and profitability per client."),
@@ -175,9 +194,9 @@ CONTENT = {
         ("flows","Staffing & recruitment","From a hired candidate in Teamtailor to a draft invoice in Fortnox, with reports per client."),
     ],
     a_tag="01 · How it works",
-    a_h2="You keep your systems. I build what is missing between them.",
+    a_h2="You keep your systems. We build what is missing between them.",
     a_p=["Most businesses already have good systems for accounting, sales and booking. The problem is what happens between them: data copied by hand, reconciliations in Excel and reminders someone has to remember.",
-         "I build the workflows in n8n, a workflow tool where an event – a paid invoice, a new order, a hired candidate – starts a chain of checks and steps. Every client gets their own n8n installation, and I monitor the workflows continuously."],
+         "We build the workflows in n8n, a workflow tool where an event – a paid invoice, a new order, a hired candidate – starts a chain of checks and steps. Every client gets their own n8n installation, and we monitor the workflows continuously."],
     a_signs_h="Signs you need a workflow",
     a_signs=["The same data is entered into two or more systems.","Someone reconciles figures between systems every week or month.","You chase customers, clients or colleagues for the same information again and again.","The report you want needs data from several systems."],
     a_ex_h="What the workflows typically do",
@@ -186,8 +205,8 @@ CONTENT = {
     flow=[("IN","Return registered","In the warehouse system (Ongoing WMS)"),("n8n","Workflow starts","The order is matched and checked"),("SHOP","Refund prepared","Draft in the web shop for approval"),("FTX","Credit note","Draft created in Fortnox"),("OUT","Exceptions flagged","You are notified if something does not match")],
     a_benefit="The result: fewer manual steps, fewer missed errors and figures you can trust.",
     b_tag="02 · Example workflows",
-    b_h2="Specific workflows, not general automation.",
-    b_lead="A few examples of what I build. Each workflow is scoped and priced on its own, and built around your systems and rules.",
+    b_h2="Specific n8n workflows between Fortnox, web shop, warehouse and Teamtailor.",
+    b_lead="A few examples of what we build. Each workflow is scoped and priced on its own, and built around your systems and rules.",
     b_items=[
         ("Missing-documents chaser · accounting firm","Checks every night which clients are missing documents in Fortnox and sends reminders before VAT and payroll deadlines."),
         ("Client overview · accounting firm","Hours, unbilled work and revenue per client in a weekly report, flagged when the margin is too low."),
@@ -199,9 +218,9 @@ CONTENT = {
         ("Placement to invoice · staffing","When a candidate is marked as hired in Teamtailor, a customer and draft invoice are created in Fortnox."),
     ],
     b_note="Clinic workflows never handle patient records, photos or treatment details – only contact details, times, amounts and consent.",
-    c_tag="03 · What I do not build",
-    c_h2="If a ready-made app exists, I will tell you.",
-    c_lead="Many common connections are already solved by ready-made apps for a few hundred kronor a month. Then you are better off using them. I build what sits between your systems and that no app does for you.",
+    c_tag="03 · What we do not build",
+    c_h2="If a ready-made app exists, we will tell you.",
+    c_lead="Many common connections are already solved by ready-made apps for a few hundred kronor a month. Then you are better off using them. We build what sits between your systems and that no app does for you.",
     infra_env="Your own environment", infra_in=("Your systems","Fortnox, web shop, warehouse, ATS"), infra_core=("Own n8n installation","one per client"), infra_out=("Checks & reports","alerts, drafts, overviews"),
     infra_ext_s="Kept out", infra_ext_b="Sensitive data", infra_ext_t="Patient records and health data never move",
     c_adv_h="Better bought ready-made",
@@ -213,17 +232,17 @@ CONTENT = {
               ("Cost","Monthly fee, often low","Fixed build price plus a monthly fee for operation"),
               ("Customisation","Limited to the app's settings","Your rules and exceptions"),
               ("Number of systems","Usually two","As many as needed"),
-              ("Responsibility","The vendor","Me, as agreed")],
+              ("Responsibility","The vendor","Us, as agreed")],
     c_note="Your own installation gives you more control, but it is not automatically secure or GDPR-compliant. How data is handled is assessed for each workflow.",
     d_tag="04 · Pricing",
-    d_h2="How I price.",
-    d_lead="No ticking hourly rate. You get a fixed price for each workflow before I start, and a monthly fee that covers operation, monitoring and minor adjustments. The exact price is given after the first call.",
+    d_h2="How we price.",
+    d_lead="No ticking hourly rate. You get a fixed price for each workflow before we start, and a monthly fee that covers operation, monitoring and minor adjustments. The exact price is given after the first call.",
     d_col1=("What you pay for",["Free first call, 30 minutes","Scoping for larger projects – credited against the build","Fixed price per workflow","Monthly fee for operation and monitoring","Servers and licences at cost"]),
     d_col2=("Always included",["Error logging and alerts","Documentation of every workflow","Testing with real data before go-live","Adjustments when a system changes","You own the workflows"]),
-    p_eyebrow="How I work", p_h2="Four steps, one workflow at a time.",
-    p_steps=[("Call","30 minutes on what takes time and which systems you use. Free of charge."),("Proposal","One scoped workflow with a fixed price and timeline. I first check whether a ready-made app would do."),("Build and test","I build the workflow in your own n8n environment and test it with real data."),("Operation","The workflow is monitored continuously. Once it works, we take the next.")],
+    p_eyebrow="How we work", p_h2="Four steps, one workflow at a time.",
+    p_steps=[("Call","30 minutes on what takes time and which systems you use. Free of charge."),("Proposal","One scoped workflow with a fixed price and timeline. We first check whether a ready-made app would do."),("Build and test","We build the workflow in your own n8n environment and test it with real data."),("Operation","The workflow is monitored continuously. Once it works, we take the next.")],
     u_eyebrow="Best fit", u_h2="Businesses that have the systems but lack the connection.",
-    u_lead="My clients usually have 2–50 employees and use several systems that do not talk to each other.",
+    u_lead="Our clients usually have 2–50 employees and use several systems that do not talk to each other.",
     u_items=[("You use Fortnox or Bokio","And at least one other system – web shop, warehouse, recruitment system or booking."),("Someone does the same thing every week","Reconciliations, reminders or reports that take hours."),("Mistakes cost money","Missed deadlines, wrong stock levels or invoices that never go out."),("You want to own the solution","The workflows are documented and yours, even if you change supplier."),("Not a good fit","If a ready-made app solves the problem, or you only need a one-off export.")],
     k_eyebrow="Do the maths", k_h2="How much time goes into manual work between your systems?",
     k_lead="Enter a task that is done over and over. The result is a simple estimate based on your own figures.",
@@ -234,30 +253,32 @@ CONTENT = {
     k_msg="Hi! I would like to discuss a workflow for a recurring task. It is done about {n} times a week and takes about {min} minutes each time. According to the calculator that is about {h} hours a month.",
     f_eyebrow="FAQ", f_h2="Answers to the most common questions.",
     faq=[
-        ("What do you do, in short?","I connect the systems a business already uses and automate recurring work between them, such as reminders, reconciliations, drafts in Fortnox and reports. I build in n8n and look after the workflows afterwards."),
-        ("Do you build AI chatbots?","No, that is not my focus. I build integrations and automated workflows. Where AI is useful, for example to read a document, it can be one step in a workflow."),
-        ("Why not Zapier or a ready-made app?","If a ready-made app covers your needs, I will recommend it. Your own workflow pays off when you have your own rules, several systems or systems without ready-made connections."),
-        ("Do we need a Fortnox integration licence?","Yes, integrations with Fortnox require Fortnox's integration licence. It is included in some Fortnox packages and can otherwise be added. I will help you check what applies to you."),
+        ("What do you do, in short?","We are a small team that connects the systems a business already uses and automates recurring work between them, such as reminders, reconciliations, drafts in Fortnox and reports. We build in n8n and look after the workflows afterwards."),
+        ("Do you work as n8n consultants?","Yes. We build, deploy and maintain n8n workflows for small businesses in Sweden. Every client gets their own n8n installation, and we monitor the workflows so failures are caught."),
+        ("Can you connect our system to Fortnox?","Usually, if the system has an API, webhooks or exports. We first check whether a ready-made integration already exists on the Fortnox marketplace. If it does the job, we recommend it."),
+        ("Do you build AI chatbots?","No, that is not our focus. We build integrations and automated workflows. Where AI is useful, for example to read a document, it can be one step in a workflow."),
+        ("Why not Zapier or a ready-made app?","If a ready-made app covers your needs, we will recommend it. Your own workflow pays off when you have your own rules, several systems or systems without ready-made connections."),
+        ("Do we need a Fortnox integration licence?","Yes, integrations with Fortnox require Fortnox's integration licence. It is included in some Fortnox packages and can otherwise be added. We will help you check what applies to you."),
         ("Who owns the workflows?","You do. Every client gets their own n8n installation and the workflows are documented. If we stop working together, you can take them over or hand them to someone else."),
-        ("What happens if a system changes?","The workflows log errors and alert me. Minor adjustments when a system changes are included in the monthly fee."),
-        ("How is personal data handled?","I act as a data processor and sign an agreement with every client. The workflows only handle the data they need, and hosting is within the EU. That does not make a solution automatically GDPR-compliant – it is assessed for each workflow."),
+        ("What happens if a system changes?","The workflows log errors and alert us. Minor adjustments when a system changes are included in the monthly fee."),
+        ("How is personal data handled?","We act as a data processor and sign an agreement with every client. The workflows only handle the data they need, and hosting is within the EU. That does not make a solution automatically GDPR-compliant – it is assessed for each workflow."),
         ("How long does it take?","Mostly it depends on how quickly we get access to your systems. A scoped workflow moves fast once access is in place. You get a timeline in the proposal."),
-        ("What does it cost?","A fixed price per workflow and a monthly fee for operation. The exact price is given after the first call, once I know which systems are involved. The call is free."),
-        ("Do you still build websites?","Yes, but my focus is integrations and automation. Get in touch if you need both."),
+        ("What does it cost?","A fixed price per workflow and a monthly fee for operation. The exact price is given after the first call, once we know which systems are involved. The call is free."),
+        ("Do you still build websites?","Yes, but our focus is integrations and automation. Get in touch if you need both."),
     ],
-    t_eyebrow="Contact", t_h2="Tell me what takes time today.",
-    t_lead="Briefly describe which systems you use and what is done by hand. I reply within one business day. The first call is free and carries no obligation.",
+    t_eyebrow="Contact", t_h2="Tell us what takes time today.",
+    t_lead="Briefly describe which systems you use and what is done by hand. We reply within one business day. The first call is free and carries no obligation.",
     t_cta_mail="Or email directly:",
     form=dict(name="Name",email="Email",company="Company",optional="optional",topic="Which industry?",msg="Message",msg_ph="Which systems do you use and what is done by hand today?",
               topics=[("accounting","Accounting firm"),("ecommerce","E-commerce / warehouse"),("clinic","Clinic"),("installer","Installer (solar, battery, EV charger, heat pump)"),("staffing","Staffing / recruitment"),("other","Other / not sure yet")],
               consent="I agree that Arnell Company processes my details to respond to my enquiry. Read more under",consent_link="Privacy",send="Send enquiry",sending="Sending …",
-              ok="Thank you! I have received your enquiry and will reply within one business day.",err="Something went wrong. Please write directly to"),
-    foot_tag="Integrations and automation for small businesses.", foot_nav="Navigation", foot_contact="Contact", foot_lang="Language",
-    foot_links=[("services","Industries"),("how","How it works"),("flows","Example workflows"),("scope","What I do not build"),("pricing","Pricing"),("faq","FAQ")],
-    priv_h="Privacy", priv_p="The details you send through the contact form are used only to respond to your enquiry and follow up on the contact. I do not sell them or share them with third parties for marketing. The form is delivered as an email via the FormSubmit service. If you would like your details deleted, email me. This website does not use marketing cookies.",
+              ok="Thank you! We have received your enquiry and will reply within one business day.",err="Something went wrong. Please write directly to"),
+    foot_tag="Integrations and automation with n8n for small businesses.", foot_nav="Navigation", foot_contact="Contact", foot_lang="Language",
+    foot_links=[("services","Industries"),("how","How it works"),("flows","Example workflows"),("scope","What we do not build"),("pricing","Pricing"),("faq","FAQ")],
+    priv_h="Privacy", priv_p="The details you send through the contact form are used only to respond to your enquiry and follow up on the contact. We do not sell them or share them with third parties for marketing. The form is delivered as an email via the FormSubmit service. If you would like your details deleted, email us. This website does not use marketing cookies.",
     rights="All rights reserved.", to_top="Back to top",
     subject="New enquiry from arnellcompany.se (en)",
-    schema_desc="Arnell Company builds integrations and automated workflows in n8n for small businesses in Sweden: accounting firms, e-commerce, clinics, installers and staffing companies.",
+    schema_desc="Arnell Company is a small team in Sweden building integrations and automated workflows in n8n for small businesses: accounting firms, e-commerce, clinics, installers and staffing companies.",
 ),
 }
 
@@ -271,7 +292,12 @@ def build_schema(c, lang):
            "name": "Arnell Company", "url": sv_url, "logo": DOMAIN + "/logo.png", "image": DOMAIN + "/og-image.png",
            "email": EMAIL, "description": c["schema_desc"],
            "areaServed": [{"@type": "Country", "name": "Sweden"}], "knowsLanguage": ["sv", "en"],
-           "availableLanguage": ["Swedish", "English"]}
+           "availableLanguage": ["Swedish", "English"],
+           "knowsAbout": ["n8n", "Fortnox", "Shopify", "Ongoing WMS", "Teamtailor", "Bokadirekt", "API-integration", "Affärsautomation"]}
+    if ORG_LEGAL_NAME: org["legalName"] = ORG_LEGAL_NAME
+    if ORG_NR: org["taxID"] = ORG_NR
+    if VAT_ID: org["vatID"] = VAT_ID
+    if SAME_AS: org["sameAs"] = SAME_AS
     services = []
     for i, (sid, name, d) in enumerate(c["svc"]):
         services.append({"@type": "Service", "@id": f"{url}#service-{i+1}", "name": name, "description": d,
@@ -292,7 +318,7 @@ def render(lang):
     sv_url, en_url = sv_en_urls(c)
     canon = sv_url if lang == "sv" else en_url
     f = c["form"]
-    i18n = {"lang": lang, "locale": c["locale"], "email": EMAIL, "subject": c["subject"], "sending": f["sending"],
+    i18n = {"lang": lang, "locale": c["locale"], "email": EMAIL, "cc": CC_EMAIL, "subject": c["subject"], "sending": f["sending"],
             "ok": f["ok"], "err": f["err"], "calcMsg": c["k_msg"]}
 
     nav_items = "".join(f'<li><a href="#{i}">{e(t)}</a></li>' for i, t in c["nav"])
@@ -624,9 +650,46 @@ def render(lang):
 '''
     return page
 
+def build_sitemap():
+    lm = last_modified()
+    alt = (f'    <xhtml:link rel="alternate" hreflang="sv" href="{DOMAIN}/"/>\n'
+           f'    <xhtml:link rel="alternate" hreflang="en" href="{DOMAIN}/en/"/>\n'
+           f'    <xhtml:link rel="alternate" hreflang="x-default" href="{DOMAIN}/"/>\n')
+    urls = "".join(f"  <url>\n    <loc>{DOMAIN}{p}</loc>\n    <lastmod>{lm}</lastmod>\n{alt}  </url>\n" for p in ("/", "/en/"))
+    return ('<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
+            + urls + '</urlset>\n')
+
+def build_404():
+    return '''<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sidan finns inte | Arnell Company</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:#F6F4EE;color:#0E1116;font:16px/1.6 "Hanken Grotesk",Georgia,serif;padding:2rem}
+main{max-width:34rem}h1{font-size:2rem;line-height:1.15;margin:0 0 .75rem}a{color:#0848A8}p{margin:.4rem 0}
+</style>
+</head>
+<body>
+<main>
+<img src="/logo.png" width="160" height="30" alt="Arnell Company">
+<h1>Sidan finns inte.</h1>
+<p>Länken kan vara gammal eller felskriven. <a href="/">Till startsidan</a> · <a href="/#contact">Kontakta oss</a></p>
+<p lang="en">This page does not exist. <a href="/en/">Go to the English site</a>.</p>
+</main>
+</body>
+</html>
+'''
+
 if __name__ == "__main__":
     out = ROOT / "dist"
     (out / "en").mkdir(parents=True, exist_ok=True)
     (out / "index.html").write_text(render("sv"), encoding="utf-8")
     (out / "en" / "index.html").write_text(render("en"), encoding="utf-8")
+    (out / "sitemap.xml").write_text(build_sitemap(), encoding="utf-8")
+    (out / "404.html").write_text(build_404(), encoding="utf-8")
     print("built", out / "index.html", out / "en/index.html")
