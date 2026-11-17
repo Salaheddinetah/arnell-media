@@ -12,7 +12,7 @@ import json, html, pathlib, subprocess, datetime
 
 ROOT = pathlib.Path(__file__).parent
 DOMAIN = "https://arnellcompany.se"
-EMAIL = "contact@arnellcompany.se"
+EMAIL = "hello@arnellcompany.se"
 CC_EMAIL = "eddy@arnellcompany.se"   # gets a copy of every form submission (FormSubmit _cc)
 FORM_ENDPOINT = "https://formsubmit.co/ajax/" + EMAIL   # works after first-submission email confirmation
 YEAR = 2026
